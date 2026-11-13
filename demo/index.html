@@ -273,7 +273,7 @@ var _home=V.home,_ready=V.ready,_result=V.result,_account=V.account,_nocred=V.no
 V.home=function(){var h=_home();if(S.acct!=='ind')return h;return h.replace('<p class="small" style="margin:0">Select a scenario</p>',meter()+'<p class="small" style="margin:0">Select a scenario</p>')};
 V.list=function(){return V.home()};
 V.ready=function(){var h=_ready();if(S.acct!=='ind')return h;var ok=S.cr>0;
- var note='<p class="costnote">'+(S.mode==='learn'?'Learn uses about 2 credits.':'This '+S.kind+' test uses about '+cost()+' credits.')+' You have '+S.cr+'. A started run always finishes.</p>';
+ var note='<p class="costnote">'+'Charged at 1 credit per minute of actual use.'+' You have '+S.cr+'. A started run always finishes.</p>';
  return h.replace(/<button type="button" class="btn" data-go="(scene|nocred)">Start<\/button>/,note+'<button type="button" class="btn" data-go="'+(ok?'scene':'nocred')+'">Start</button>')};
 V.result=function(){var h=_result();if(S.acct!=='ind')return h;var used=S.last||cost(),line='<div class="usedline">This run used about <b>'+used+' credits</b>. <b>'+S.cr+'</b> left.</div>';
  if(S.mode==='test')return h.replace('<p class="small" style="margin:0">Example result with sample feedback.</p>','<p class="small" style="margin:0">Example result with sample feedback.</p>'+line).replace('Only you can see this. Your department never sees your score.','Only you can see this.');
