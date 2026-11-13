@@ -83,7 +83,7 @@ footer{background:var(--ink);color:#B7C3CF;padding:36px 0 calc(36px + env(safe-a
 #pv .pvm{position:relative;background:#000;aspect-ratio:16/9}#pv .pvm video,#pv .pvm img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 #pv .pvx{position:absolute;top:8px;right:8px;z-index:2;min-width:44px;min-height:44px;border:0;border-radius:22px;background:rgba(0,0,0,.65);color:#fff;font-size:20px;cursor:pointer}
 #pv .pvj{display:inline-block;padding:13px 20px;border-radius:10px;background:#C8420F;color:#fff;font-weight:700;text-decoration:none}
-</style></head><body>
+</style><script defer src="https://cloud.umami.is/script.js" data-website-id="REPLACE_WITH_UMAMI_WEBSITE_ID"></script></head><body>
 <a class="skip" href="#join">Skip to sign up</a>
 <header><div class="w"><a class="logo" href="#top">Incident<b>Axis</b></a><nav aria-label="Main"><a class="hide-sm" href="#how">How it works</a><a class="hide-sm" href="#scenarios">Scenarios</a><a class="hide-sm" href="#pricing">Pricing</a><a class="hide-sm" href="#faq">Questions</a><a class="cta sm hide-sm" href="#join">Join the early list</a></nav></div></header>
 
@@ -95,7 +95,7 @@ footer{background:var(--ink);color:#B7C3CF;padding:36px 0 calc(36px + env(safe-a
 <div class="row"><a class="cta" href="#join">Join the early list</a><a class="cta o" href="#how">See how a run works</a></div><p style="margin:14px 0 0;font-size:15px"><a href="demo/" style="color:var(--em);font-weight:600">Preview the screens →</a> <span style="color:var(--mut)">(prototype, work in progress)</span></p>
 <div class="facts"><span>Speak your orders</span><span>Learn and Test modes</span><span>Works on your phone</span></div>
 </div>
-<div><div class="phone" role="button" tabindex="0" data-k="electric-vehicle-fire" data-n="Electric vehicle fire" data-src="loops/electric-vehicle-fire-portrait.mp4" aria-label="Sample screen: a scenario video fills the phone, with a countdown timer and a live microphone indicator. Tap to watch it larger."><div class="scene" data-loop="loops/electric-vehicle-fire-portrait.mp4"></div><div class="hud"><b>Electric vehicle fire</b><i>1:42</i></div><div class="chip">Incident status ▾</div><div class="live"><i></i>Your turn · mic is live</div></div><div class="cap">Sample screen. Illustrative simulation: locations and names are fictionalized.</div></div>
+<div><div class="phone" role="button" tabindex="0" data-k="electric-vehicle-fire" data-n="Electric vehicle fire" data-umami-event="tile-open" data-umami-event-scenario="Hero phone video" data-src="loops/electric-vehicle-fire-portrait.mp4" aria-label="Sample screen: a scenario video fills the phone, with a countdown timer and a live microphone indicator. Tap to watch it larger."><div class="scene" data-loop="loops/electric-vehicle-fire-portrait.mp4"></div><div class="hud"><b>Electric vehicle fire</b><i>1:42</i></div><div class="chip">Incident status ▾</div><div class="live"><i></i>Your turn · mic is live</div></div><div class="cap">Sample screen. Illustrative simulation: locations and names are fictionalized.</div></div>
 </div></section>
 
 <section class="by" aria-label="About the builder"><div class="w"><img src="assets/marcel.jpg" alt="Marcel Cafferata" width="96" height="96"><div><p class="who">Built by a working firefighter</p><p class="q">I'm Marcel Cafferata, a California fire engineer with 25 years in the service. I built IncidentAxis so you can practice running the first two minutes of an incident out loud, before the real call.</p></div></div></section>
@@ -139,7 +139,7 @@ footer{background:var(--ink);color:#B7C3CF;padding:36px 0 calc(36px + env(safe-a
 
 <section id="join"><div class="w sec"><div class="join">
 <div><h2>Get the first scenarios when they are ready</h2><p style="margin:14px 0 0;color:var(--mut)">One email at launch, and updates as new scenarios are finished.</p></div>
-<form id="f" name="incidentaxis-early-list" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" novalidate><input type="hidden" name="form-name" value="incidentaxis-early-list"><p style="position:absolute;left:-9999px" aria-hidden="true"><label>Do not fill this out <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><label for="em">Email address</label><input id="em" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required><button class="cta" type="submit">Join the list</button><div id="msg" role="status" aria-live="polite"></div><div style="flex-basis:100%;font-size:14px;color:var(--mut)">Only IncidentAxis updates. To be removed, email <a href="mailto:marcel@firefighteradvocate.com">marcel@firefighteradvocate.com</a>. See our <a href="privacy.html">Privacy Policy</a>.</div></form>
+<form id="f" name="incidentaxis-early-list" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" novalidate><input type="hidden" name="form-name" value="incidentaxis-early-list"><p style="position:absolute;left:-9999px" aria-hidden="true"><label>Do not fill this out <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><label for="em">Email address</label><input id="em" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required><button class="cta" type="submit" data-umami-event="join-submit-click">Join the list</button><div id="msg" role="status" aria-live="polite"></div><div style="flex-basis:100%;font-size:14px;color:var(--mut)">Only IncidentAxis updates. To be removed, email <a href="mailto:marcel@firefighteradvocate.com">marcel@firefighteradvocate.com</a>. See our <a href="privacy.html">Privacy Policy</a>.</div></form>
 </div></div></section>
 </main>
 
@@ -151,7 +151,7 @@ footer{background:var(--ink);color:#B7C3CF;padding:36px 0 calc(36px + env(safe-a
 var $=function(i){return document.getElementById(i)};
 var ST=['Electric vehicle fire','Single-family house fire','Commercial smoke','Apartment fire','Vegetation fire','Vehicle accident','Cliff rescue','Hazardous materials'],DY=['Kitchen fire, residential street','Apartment fire','Vegetation fire','Apartment fire with rescue'];
 var CLIP={'Electric vehicle fire':'electric-vehicle-fire','Single-family house fire':'single-family-house','Commercial smoke':'northgate-storage','Vehicle accident':'vehicle-accident','Cliff rescue':'cliff-rescue','Hazardous materials':'freeway-hazmat','Kitchen fire, residential street':'kitchen-fire-dynamic','Apartment fire':'apartment-fire','Vegetation fire':'vegetation-fire','Apartment fire with rescue':'apartment-fire-with-rescue'};
-function cards(a,t){return a.map(function(s){var k=CLIP[s];return '<div class="sc"><div class="ph" role="button" tabindex="0" aria-label="Watch the '+s.toLowerCase()+' preview" data-k="'+k+'" data-n="'+s+'" data-loop="loops/'+k+'-loop.mp4"><span class="sim">Simulation</span><img src="assets/posters/'+k+'.jpg" alt="Preview of the '+s.toLowerCase()+' scenario" loading="lazy"></div><b>'+s+'</b><span class="tag">'+t+'</span></div>'}).join('')}
+function cards(a,t){return a.map(function(s){var k=CLIP[s];return '<div class="sc"><div class="ph" role="button" tabindex="0" aria-label="Watch the '+s.toLowerCase()+' preview" data-k="'+k+'" data-n="'+s+'" data-umami-event="tile-open" data-umami-event-scenario="'+s+'" data-loop="loops/'+k+'-loop.mp4"><span class="sim">Simulation</span><img src="assets/posters/'+k+'.jpg" alt="Preview of the '+s.toLowerCase()+' scenario" loading="lazy"></div><b>'+s+'</b><span class="tag">'+t+'</span></div>'}).join('')}
 $('st').innerHTML=cards(ST,'Static');$('dy').innerHTML=cards(DY,'Dynamic');
 var PACE=[['A few runs a month',15],['About once a week',35],['Most days',120],['Every training day',700]];
 var sel=1;
@@ -184,7 +184,7 @@ fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlenco
 /* Tile preview: tap a scenario picture to watch the clip larger, with a link to the early list. Prototype preview only; no app sign-up exists yet. */
 (function(){
  var d=document.createElement('dialog');d.id='pv';d.setAttribute('aria-label','Scenario preview');
- d.innerHTML='<div class="pvm"><button type="button" class="pvx" aria-label="Close preview">&times;</button></div><div class="pvb"><h3></h3><p>Simulation preview. Locations and names are fictionalized. The app is not open for sign-up yet.</p><a class="pvj" href="#join">Join the early list &rarr;</a></div>';
+ d.innerHTML='<div class="pvm"><button type="button" class="pvx" aria-label="Close preview">&times;</button></div><div class="pvb"><h3></h3><p>Simulation preview. Locations and names are fictionalized. The app is not open for sign-up yet.</p><a class="pvj" href="#join" data-umami-event="join-click-from-preview">Join the early list &rarr;</a></div>';
  document.body.appendChild(d);
  var m=d.querySelector('.pvm'),h=d.querySelector('h3'),v=null;
  function close(){if(v){v.pause();v.remove();v=null}var i=m.querySelector('img');if(i)i.remove();if(d.open)d.close()}
