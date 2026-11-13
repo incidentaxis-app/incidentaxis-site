@@ -130,7 +130,7 @@ footer{background:var(--ink);color:#B7C3CF;padding:36px 0 calc(36px + env(safe-a
 
 <section id="join"><div class="w sec"><div class="join">
 <div><h2>Get the first scenarios when they are ready</h2><p style="margin:14px 0 0;color:var(--mut)">One email at launch, and updates as new scenarios are finished.</p></div>
-<form id="f" novalidate><label for="em">Email address</label><input id="em" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com"><button class="cta" type="submit">Join the list</button><div id="msg" role="status"></div><div style="flex-basis:100%;font-size:14px;color:var(--mut)">Only IncidentAxis updates. Unsubscribe at any time.</div></form>
+<form id="f" name="incidentaxis-early-list" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" novalidate><input type="hidden" name="form-name" value="incidentaxis-early-list"><p style="position:absolute;left:-9999px" aria-hidden="true"><label>Do not fill this out <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><label for="em">Email address</label><input id="em" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required><button class="cta" type="submit">Join the list</button><div id="msg" role="status" aria-live="polite"></div><div style="flex-basis:100%;font-size:14px;color:var(--mut)">Only IncidentAxis updates. To be removed, email <a href="mailto:marcel@firefighteradvocate.com">marcel@firefighteradvocate.com</a>. See our <a href="privacy.html">Privacy Policy</a>.</div></form>
 </div></div></section>
 </main>
 
@@ -163,6 +163,12 @@ $('faqs').innerHTML=FAQ.map(function(f){return '<details><summary>'+f[0]+'</summ
   else if(v&&v.parentNode){v.pause()}})},{threshold:.35});
  document.querySelectorAll('[data-loop]').forEach(function(b){io.observe(b)});
 })();
-$('f').addEventListener('submit',function(e){e.preventDefault();var v=$('em').value.trim();$('msg').textContent=/^\S+@\S+\.\S+$/.test(v)?'Draft page: signup is not connected yet, so nothing was saved.':'Please enter a valid email address.'});
+$('f').addEventListener('submit',function(e){e.preventDefault();var f=$('f'),v=$('em').value.trim(),m=$('msg'),btn=f.querySelector('button');
+if(!/^\S+@\S+\.\S+$/.test(v)){m.textContent='Please enter a valid email address.';return}
+btn.disabled=true;m.textContent='Saving...';
+fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()})
+.then(function(r){if(!r.ok)throw 0;m.textContent='You are on the list. Thank you.';f.reset()})
+.catch(function(){m.textContent='Something went wrong. Please try again, or email marcel@firefighteradvocate.com.'})
+.then(function(){btn.disabled=false})});
 })();
 </script></body></html>
