@@ -1,0 +1,10 @@
+{
+ "target_path": "loops/yard-tanker-loop.mp4",
+ "note": "Stabilized + full-length replacement for the yard tanker tile loop. Source: pack master yard-tanker-loop.mp4 (1920x1080, 30 Mbps) \u2014 vidstabdetect/vidstabtransform smoothing=30, optzoom=1, scaled 1280x720, loop-seam crossfade blend 0.8s, CRF 21. Measured: residual camera shift <=1px (was a wandering ~3-4px); 0 duplicated frames (framemd5); wrap MAD 1.37. Reassemble parts in order, base64 -d.",
+ "whole_file_sha256": "43becc3bb68a3331ac8838681a46845a9000ceb5",
+ "bytes": 2980471,
+ "duration_s": 9.25,
+ "size": "1280x720",
+ "fps": 24,
+ "parts": 33
+}
