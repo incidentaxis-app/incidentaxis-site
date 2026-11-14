@@ -24,7 +24,7 @@ nav{display:flex;gap:4px;align-items:center;font-size:15px}nav a{text-decoration
 .cta.sm{min-height:44px;padding:0 18px;font-size:15px;background:var(--ink)}.cta.sm:hover{background:var(--em)}
 .eyebrow{font:500 13px var(--m);letter-spacing:.14em;text-transform:uppercase;color:var(--em)}
 h1,h2,h3{font-family:var(--d);text-transform:uppercase;margin:0;text-wrap:balance}
-h1{font-size:clamp(46px,7.4vw,92px);line-height:.93;font-weight:700}
+h1{font-size:clamp(40px,7.4vw,92px);line-height:.93;font-weight:700}
 h2{font-size:clamp(36px,5vw,56px);line-height:1;font-weight:700}
 h3{font-size:28px;font-weight:700;line-height:1.05}
 .hero{padding:56px 0 72px}.hero .w{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
@@ -85,8 +85,6 @@ footer{background:var(--ink);color:#B7C3CF;padding:36px 0 calc(36px + env(safe-a
 #pv .pvx{position:absolute;top:8px;right:8px;z-index:2;min-width:44px;min-height:44px;border:0;border-radius:22px;background:rgba(0,0,0,.65);color:#fff;font-size:20px;cursor:pointer}
 #pv .pvj{display:inline-block;padding:13px 20px;border-radius:10px;background:#C8420F;color:#fff;font-weight:700;text-decoration:none}
 .promise{margin:12px 0 0;font-size:15px;color:var(--mut)}.promise b{color:var(--ink)}
-.prac{background:var(--card);border-block:1px solid var(--line);padding:26px 0}.prac h2{font:500 13px var(--m);letter-spacing:.14em;text-transform:uppercase;color:var(--em);margin:0 0 14px}.prac ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.prac li{border-left:3px solid var(--em);padding:2px 0 2px 12px}.prac b{display:block;font:700 22px var(--d);text-transform:uppercase}.prac span{display:block;color:var(--mut);font-size:15px;line-height:1.4}
-@media (max-width:760px){.prac ol{grid-template-columns:1fr 1fr}}
 .thanks{display:none;flex-basis:100%;background:var(--ink);color:#fff;border-radius:12px;padding:18px}.thanks h3{font:700 24px var(--d);text-transform:uppercase;margin:0 0 6px}.thanks p{margin:0 0 12px;color:#C9D3DC}.thanks .cta{min-height:44px}
 </style><script defer src="https://cloud.umami.is/script.js" data-website-id="90ba6962-c536-480d-b74c-643565071938"></script></head><body>
 <a class="skip" href="#join">Skip to sign up</a>
@@ -98,13 +96,12 @@ footer{background:var(--ink);color:#B7C3CF;padding:36px 0 calc(36px + env(safe-a
 <h1 style="margin-top:14px">Hear the dispatch. Study the scene. Take command.</h1>
 <p class="lead">Practice the first 120 seconds of incident command out loud. Size up, give your orders, and see how the incident answers. Then see exactly what to work on next.</p>
 <div class="row"><a class="cta" href="#join" data-umami-event="join-click-hero">Join the free beta</a><a class="cta o" href="#how">See how a run works</a></div><p class="promise"><b>Free for beta testers.</b> No card. Tell us what works and what does not.</p><p style="margin:14px 0 0;font-size:15px"><a href="demo/" style="color:var(--em);font-weight:600">Preview the screens →</a> <span style="color:var(--mut)">(prototype, work in progress)</span></p>
-<div class="facts"><span>Speak your orders</span><span>Learn and Test modes</span><span>Works on your phone</span></div>
+<div class="facts"><span>Radio report, size-up, orders, debrief</span><span>Learn and Test modes</span><span>Works on your phone</span></div>
 </div>
 <div><div class="phone" role="button" tabindex="0" data-k="electric-vehicle-fire" data-n="Electric vehicle fire" data-umami-event="tile-open" data-umami-event-scenario="Hero phone video" data-src="loops/electric-vehicle-fire-portrait.mp4" aria-label="Sample screen: a scenario video fills the phone, with a countdown timer and a live microphone indicator. Tap to watch it larger."><div class="scene" data-loop="loops/electric-vehicle-fire-portrait.mp4"></div><div class="hud"><b>Electric vehicle fire</b><i>1:42</i></div><div class="chip">Incident status ▾</div><div class="live"><i></i>Your turn · mic is live</div></div><div class="cap">Sample screen. Illustrative simulation: locations and names are fictionalized.</div></div>
 </div></section>
 
 
-<section class="prac" aria-label="What you will practice"><div class="w"><h2>What you will practice</h2><ol><li><b>Radio report</b><span>Give your arrival report out loud.</span></li><li><b>Size-up</b><span>Read the scene and call what you see.</span></li><li><b>Orders</b><span>Assign companies and tasks by voice.</span></li><li><b>Debrief</b><span>See what to work on next.</span></li></ol></div></section>
 <section class="by" aria-label="About the builder"><div class="w"><img src="assets/marcel.jpg" alt="Marcel Cafferata" width="96" height="96"><div><p class="who">Built by a working firefighter</p><p class="q">I'm Marcel Cafferata, a California fire engineer with 25 years in the service. I built IncidentAxis so you can practice running the first two minutes of an incident out loud, before the real call.</p></div></div></section>
 <section id="how" class="dark"><div class="w sec">
 <h2>How a run works</h2>
