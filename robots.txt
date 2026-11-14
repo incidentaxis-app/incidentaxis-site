@@ -1,5 +1,2 @@
 User-agent: *
-Allow: /
-Disallow: /demo/
-Disallow: /privacy.html
-Disallow: /terms.html
+Disallow: /
