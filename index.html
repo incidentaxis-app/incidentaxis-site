@@ -176,12 +176,13 @@ $('faqs').innerHTML=FAQ.map(function(f){return '<details><summary>'+f[0]+'</summ
   else if(v&&v.parentNode){v.pause()}})},{threshold:.35});
  document.querySelectorAll('[data-loop]').forEach(function(b){io.observe(b)});
 })();
+var jn=document.getElementById('join'),sk=document.querySelector('.sticky');if(jn&&sk&&'IntersectionObserver'in window){new IntersectionObserver(function(en){sk.style.display=en[0].isIntersecting?'none':''}).observe(jn)}
 $('shr').addEventListener('click',function(e){e.preventDefault();var u='https://incidentaxis.netlify.app/',x='Practice the first 120 seconds of incident command out loud. Free beta:';if(navigator.share){navigator.share({title:'IncidentAxis',text:x,url:u}).catch(function(){})}else{location.href='mailto:?subject='+encodeURIComponent('IncidentAxis beta')+'&body='+encodeURIComponent(x+' '+u)}});
 $('f').addEventListener('submit',function(e){e.preventDefault();var f=$('f'),v=$('em').value.trim(),m=$('msg'),btn=f.querySelector('button');
 if(!/^\S+@\S+\.\S+$/.test(v)){m.textContent='Please enter a valid email address.';return}
 btn.disabled=true;m.textContent='Saving...';
 fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()})
-.then(function(r){if(!r.ok)throw 0;m.textContent='';f.reset();var t=$('thx');t.style.display='block';t.focus();if(window.umami&&umami.track)umami.track('join-success')})
+.then(function(r){if(!r.ok){m.setAttribute('data-status',r.status);throw 0}m.textContent='';f.reset();var t=$('thx');t.style.display='block';t.focus();if(window.umami&&umami.track)umami.track('join-success')})
 .catch(function(){m.textContent='Something went wrong. Please try again, or email marcel@firefighteradvocate.com.'})
 .then(function(){btn.disabled=false})});
 })();
