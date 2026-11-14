@@ -2,6 +2,7 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0B1218">
+<meta property="og:type" content="website"><meta property="og:title" content="IncidentAxis: practice the first 120 seconds of incident command"><meta property="og:description" content="Hear the dispatch, size up the scene, give your orders out loud. Free beta access for early testers."><meta property="og:image" content="https://incidentaxis.netlify.app/assets/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://incidentaxis.netlify.app/assets/og.jpg">
 <title>IncidentAxis: practice the first 120 seconds of incident command</title>
 <meta name="description" content="Practice incident command out loud. Hear the dispatch, study the scene, give your orders, and see how the incident answers.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -83,21 +84,27 @@ footer{background:var(--ink);color:#B7C3CF;padding:36px 0 calc(36px + env(safe-a
 #pv .pvm{position:relative;background:#000;aspect-ratio:16/9}#pv .pvm video,#pv .pvm img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 #pv .pvx{position:absolute;top:8px;right:8px;z-index:2;min-width:44px;min-height:44px;border:0;border-radius:22px;background:rgba(0,0,0,.65);color:#fff;font-size:20px;cursor:pointer}
 #pv .pvj{display:inline-block;padding:13px 20px;border-radius:10px;background:#C8420F;color:#fff;font-weight:700;text-decoration:none}
+.promise{margin:12px 0 0;font-size:15px;color:var(--mut)}.promise b{color:var(--ink)}
+.prac{background:var(--card);border-block:1px solid var(--line);padding:26px 0}.prac h2{font:500 13px var(--m);letter-spacing:.14em;text-transform:uppercase;color:var(--em);margin:0 0 14px}.prac ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.prac li{border-left:3px solid var(--em);padding:2px 0 2px 12px}.prac b{display:block;font:700 22px var(--d);text-transform:uppercase}.prac span{display:block;color:var(--mut);font-size:15px;line-height:1.4}
+@media (max-width:760px){.prac ol{grid-template-columns:1fr 1fr}}
+.thanks{display:none;flex-basis:100%;background:var(--ink);color:#fff;border-radius:12px;padding:18px}.thanks h3{font:700 24px var(--d);text-transform:uppercase;margin:0 0 6px}.thanks p{margin:0 0 12px;color:#C9D3DC}.thanks .cta{min-height:44px}
 </style><script defer src="https://cloud.umami.is/script.js" data-website-id="90ba6962-c536-480d-b74c-643565071938"></script></head><body>
 <a class="skip" href="#join">Skip to sign up</a>
-<header><div class="w"><a class="logo" href="#top">Incident<b>Axis</b></a><nav aria-label="Main"><a class="hide-sm" href="#how">How it works</a><a class="hide-sm" href="#scenarios">Scenarios</a><a class="hide-sm" href="#pricing">Pricing</a><a class="hide-sm" href="#faq">Questions</a><a class="cta sm hide-sm" href="#join">Join the early list</a></nav></div></header>
+<header><div class="w"><a class="logo" href="#top">Incident<b>Axis</b></a><nav aria-label="Main"><a class="hide-sm" href="#how">How it works</a><a class="hide-sm" href="#scenarios">Scenarios</a><a class="hide-sm" href="#pricing">Pricing</a><a class="hide-sm" href="#faq">Questions</a><a class="cta sm hide-sm" href="#join">Join the free beta</a></nav></div></header>
 
 <main id="top">
 <section class="hero"><div class="w"><div>
 <div class="eyebrow">Incident command trainer for firefighters</div>
 <h1 style="margin-top:14px">Hear the dispatch. Study the scene. Take command.</h1>
 <p class="lead">Practice the first 120 seconds of incident command out loud. Size up, give your orders, and see how the incident answers. Then see exactly what to work on next.</p>
-<div class="row"><a class="cta" href="#join">Join the early list</a><a class="cta o" href="#how">See how a run works</a></div><p style="margin:14px 0 0;font-size:15px"><a href="demo/" style="color:var(--em);font-weight:600">Preview the screens →</a> <span style="color:var(--mut)">(prototype, work in progress)</span></p>
+<div class="row"><a class="cta" href="#join" data-umami-event="join-click-hero">Join the free beta</a><a class="cta o" href="#how">See how a run works</a></div><p class="promise"><b>Free for beta testers.</b> No card. Tell us what works and what does not.</p><p style="margin:14px 0 0;font-size:15px"><a href="demo/" style="color:var(--em);font-weight:600">Preview the screens →</a> <span style="color:var(--mut)">(prototype, work in progress)</span></p>
 <div class="facts"><span>Speak your orders</span><span>Learn and Test modes</span><span>Works on your phone</span></div>
 </div>
 <div><div class="phone" role="button" tabindex="0" data-k="electric-vehicle-fire" data-n="Electric vehicle fire" data-umami-event="tile-open" data-umami-event-scenario="Hero phone video" data-src="loops/electric-vehicle-fire-portrait.mp4" aria-label="Sample screen: a scenario video fills the phone, with a countdown timer and a live microphone indicator. Tap to watch it larger."><div class="scene" data-loop="loops/electric-vehicle-fire-portrait.mp4"></div><div class="hud"><b>Electric vehicle fire</b><i>1:42</i></div><div class="chip">Incident status ▾</div><div class="live"><i></i>Your turn · mic is live</div></div><div class="cap">Sample screen. Illustrative simulation: locations and names are fictionalized.</div></div>
 </div></section>
 
+
+<section class="prac" aria-label="What you will practice"><div class="w"><h2>What you will practice</h2><ol><li><b>Radio report</b><span>Give your arrival report out loud.</span></li><li><b>Size-up</b><span>Read the scene and call what you see.</span></li><li><b>Orders</b><span>Assign companies and tasks by voice.</span></li><li><b>Debrief</b><span>See what to work on next.</span></li></ol></div></section>
 <section class="by" aria-label="About the builder"><div class="w"><img src="assets/marcel.jpg" alt="Marcel Cafferata" width="96" height="96"><div><p class="who">Built by a working firefighter</p><p class="q">I'm Marcel Cafferata, a California fire engineer with 25 years in the service. I built IncidentAxis so you can practice running the first two minutes of an incident out loud, before the real call.</p></div></div></section>
 <section id="how" class="dark"><div class="w sec">
 <h2>How a run works</h2>
@@ -122,12 +129,12 @@ footer{background:var(--ink);color:#B7C3CF;padding:36px 0 calc(36px + env(safe-a
 <section id="pricing" style="background:#E7EBEF"><div class="w sec">
 <div class="eyebrow">Simple pricing for individuals</div>
 <h2 style="margin-top:10px">Two plans. Add credits any time.</h2>
-<p class="under" style="margin-top:12px">One credit is one minute of training, charged only for time you actually use. A run you start always finishes.</p>
+<p class="under" style="margin-top:12px"><b>Beta testers use IncidentAxis free during the beta.</b> These are the planned prices after launch. One credit is one minute of training, charged only for time you actually use. A run you start always finishes.</p>
 <div class="pick" role="group" aria-label="How often will you train?" id="pace"></div>
 <div class="rec" aria-live="polite" id="rec"></div>
 <div class="plans">
-<div class="plan"><h3>Basic</h3><div class="price">$39<small> /MONTH</small></div><div style="color:var(--mut)">50 credits included</div><ul><li>About 16 Static Tests, or a few Dynamic Tests</li><li>Learn and Test modes</li><li>Add credits any time at $0.30 each</li><li>Cancel any time</li></ul><a class="cta o" href="#join">Join the early list</a></div>
-<div class="plan hl"><span class="badge">For daily training</span><h3>Daily</h3><div class="price">$99<small> /MONTH</small></div><div style="color:var(--mut)">700 credits included</div><ul><li>4 Static and 2 Dynamic Tests a day, 5 days a week</li><li>Learn and Test modes</li><li>Add credits any time at $0.30 each</li><li>Cancel any time</li></ul><a class="cta" href="#join">Join the early list</a></div>
+<div class="plan"><h3>Basic</h3><div class="price">$39<small> /MONTH</small></div><div style="color:var(--mut)">50 credits included</div><ul><li>About 16 Static Tests, or a few Dynamic Tests</li><li>Learn and Test modes</li><li>Add credits any time at $0.30 each</li><li>Cancel any time</li></ul><a class="cta o" href="#join">Join the free beta</a></div>
+<div class="plan hl"><span class="badge">For daily training</span><h3>Daily</h3><div class="price">$99<small> /MONTH</small></div><div style="color:var(--mut)">700 credits included</div><ul><li>4 Static and 2 Dynamic Tests a day, 5 days a week</li><li>Learn and Test modes</li><li>Add credits any time at $0.30 each</li><li>Cancel any time</li></ul><a class="cta" href="#join">Join the free beta</a></div>
 </div>
 <p class="under">Each account works on up to 2 devices, one session at a time, and signs in with an emailed code, so there is no password to share. Prices shown are the planned launch prices.</p>
 </div></section>
@@ -138,13 +145,13 @@ footer{background:var(--ink);color:#B7C3CF;padding:36px 0 calc(36px + env(safe-a
 </div></section>
 
 <section id="join"><div class="w sec"><div class="join">
-<div><h2>Get the first scenarios when they are ready</h2><p style="margin:14px 0 0;color:var(--mut)">One email at launch, and updates as new scenarios are finished.</p></div>
-<form id="f" name="incidentaxis-early-list" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" novalidate><input type="hidden" name="form-name" value="incidentaxis-early-list"><p style="position:absolute;left:-9999px" aria-hidden="true"><label>Do not fill this out <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><label for="em">Email address</label><input id="em" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required><button class="cta" type="submit" data-umami-event="join-submit-click">Join the list</button><div id="msg" role="status" aria-live="polite"></div><div style="flex-basis:100%;font-size:14px;color:var(--mut)">Only IncidentAxis updates. To be removed, email <a href="mailto:marcel@firefighteradvocate.com">marcel@firefighteradvocate.com</a>. See our <a href="privacy.html">Privacy Policy</a>.</div></form>
+<div><h2>Join the free beta</h2><p style="margin:14px 0 0;color:var(--mut)">Beta testers get free access while we test, and the first scenarios as they are finished. We will email you when your access is ready. No card needed.</p></div>
+<form id="f" name="incidentaxis-early-list" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" novalidate><input type="hidden" name="form-name" value="incidentaxis-early-list"><p style="position:absolute;left:-9999px" aria-hidden="true"><label>Do not fill this out <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><label for="em">Email address</label><input id="em" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required><button class="cta" type="submit" data-umami-event="join-submit-click">Join the free beta</button><div id="msg" role="status" aria-live="polite"></div><div class="thanks" id="thx" tabindex="-1"><h3>You are on the list</h3><p>Thank you. Know a firefighter who would test this? Send them the link.</p><a class="cta" id="shr" href="#" data-umami-event="share-click">Share with your crew</a></div><div style="flex-basis:100%;font-size:14px;color:var(--mut)">Only IncidentAxis updates. To be removed, email <a href="mailto:marcel@firefighteradvocate.com">marcel@firefighteradvocate.com</a>. See our <a href="privacy.html">Privacy Policy</a>.</div></form>
 </div></div></section>
 </main>
 
 <footer><div class="w"><div style="max-width:760px">IncidentAxis is a training simulator. All scenarios are fictional. It does not replace department training or certification, and it is not affiliated with any fire agency.<p class="legal"><b>Disclaimer:</b> The visuals, renderings, and scenarios depicted are illustrative simulations created for educational and demonstration purposes only. While inspired by real-world environments, all building exteriors, architectural finishes, colors, siding, street addresses, and identifying names have been digitally altered or fictionalized. These visuals do not represent actual properties, current conditions, or real-life events, and no affiliation with or endorsement by any property owner, business, or agency is implied. Any resemblance to actual persons, properties, or events is purely coincidental.</p><p style="margin:14px 0 0"><a href="terms.html" style="color:#B7C3CF">Terms of Use</a> &nbsp;·&nbsp; <a href="privacy.html" style="color:#B7C3CF">Privacy Policy</a></p></div><div class="logo" style="color:#EEF2F5">Incident<b>Axis</b></div></div></footer>
-<div class="sticky"><b>Early list</b><a class="cta" href="#join">Join</a></div>
+<div class="sticky"><b>Free beta</b><a class="cta" href="#join" data-umami-event="join-click-sticky">Join</a></div>
 
 <script>
 (function(){
@@ -172,11 +179,12 @@ $('faqs').innerHTML=FAQ.map(function(f){return '<details><summary>'+f[0]+'</summ
   else if(v&&v.parentNode){v.pause()}})},{threshold:.35});
  document.querySelectorAll('[data-loop]').forEach(function(b){io.observe(b)});
 })();
+$('shr').addEventListener('click',function(e){e.preventDefault();var u='https://incidentaxis.netlify.app/',x='Practice the first 120 seconds of incident command out loud. Free beta:';if(navigator.share){navigator.share({title:'IncidentAxis',text:x,url:u}).catch(function(){})}else{location.href='mailto:?subject='+encodeURIComponent('IncidentAxis beta')+'&body='+encodeURIComponent(x+' '+u)}});
 $('f').addEventListener('submit',function(e){e.preventDefault();var f=$('f'),v=$('em').value.trim(),m=$('msg'),btn=f.querySelector('button');
 if(!/^\S+@\S+\.\S+$/.test(v)){m.textContent='Please enter a valid email address.';return}
 btn.disabled=true;m.textContent='Saving...';
 fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()})
-.then(function(r){if(!r.ok)throw 0;m.textContent='You are on the list. Thank you.';f.reset()})
+.then(function(r){if(!r.ok)throw 0;m.textContent='';f.reset();var t=$('thx');t.style.display='block';t.focus();if(window.umami&&umami.track)umami.track('join-success')})
 .catch(function(){m.textContent='Something went wrong. Please try again, or email marcel@firefighteradvocate.com.'})
 .then(function(){btn.disabled=false})});
 })();
@@ -184,7 +192,7 @@ fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlenco
 /* Tile preview: tap a scenario picture to watch the clip larger, with a link to the early list. Prototype preview only; no app sign-up exists yet. */
 (function(){
  var d=document.createElement('dialog');d.id='pv';d.setAttribute('aria-label','Scenario preview');
- d.innerHTML='<div class="pvm"><button type="button" class="pvx" aria-label="Close preview">&times;</button></div><div class="pvb"><h3></h3><p>Simulation preview. Locations and names are fictionalized. The app is not open for sign-up yet.</p><a class="pvj" href="#join" data-umami-event="join-click-from-preview">Join the early list &rarr;</a></div>';
+ d.innerHTML='<div class="pvm"><button type="button" class="pvx" aria-label="Close preview">&times;</button></div><div class="pvb"><h3></h3><p>Simulation preview. Locations and names are fictionalized. The app is not open for sign-up yet.</p><a class="pvj" href="#join" data-umami-event="join-click-from-preview">Join the free beta &rarr;</a></div>';
  document.body.appendChild(d);
  var m=d.querySelector('.pvm'),h=d.querySelector('h3'),v=null;
  function close(){if(v){v.pause();v.remove();v=null}var i=m.querySelector('img');if(i)i.remove();if(d.open)d.close()}
