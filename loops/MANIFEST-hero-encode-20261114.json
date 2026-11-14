@@ -1,0 +1,10 @@
+{
+ "target_path": "loops/electric-vehicle-fire-portrait.mp4",
+ "note": "Replacement hero portrait encode. Reassemble: cat electric-vehicle-fire-portrait.mp4.b64.part00 ... part18 in order, then base64 -d. Replaces the 5.0s 0.69 Mbps teaser with a full-length loop-seam-blended encode from the accepted master EV-02-growth-portrait-KLINGDIRECT-20261025.mp4 (frame-matched as the teaser source; camera measured locked, street band best-shift 0,0 at all timestamps). Wrap MAD 0.61 (was 7.03 unblended); 0 duplicated frames.",
+ "whole_file_sha256": "bbcba7caca4ed4f9b2fb38ce78bcc659e04efc3f",
+ "bytes": 1709225,
+ "duration_s": 9.25,
+ "size": "720x1280",
+ "fps": 24,
+ "parts": 19
+}
