@@ -1,0 +1,16 @@
+{
+ "note": "Freeway HazMat RESTART-SMOOTHING encode only (owner item, Claude #235 request item 5, 2026-11-14). Same picture, same sign, same lettering \u2014 nothing in the image changed. Source: pack master freeway-hazmat-loop.mp4. Recipe identical to the other tiles: 1280x720, CRF 20, 0.8s tail-to-head crossfade (output 9.25s), faststart. The unblended master's wrap difference (~16) is what made the restart jump; this encode removes the jump. Reassemble from loops/freeway-hazmat-loop.mp4.b64.partNN in order, base64 -d, verify SHA-256, bind over loops/freeway-hazmat-loop.mp4.",
+ "entries": [
+  {
+   "target_path": "loops/freeway-hazmat-loop.mp4",
+   "source": "pack master freeway-hazmat-loop.mp4 (restart smoothing only)",
+   "sha256": "5ddba73eda5ac2b963e29f289d64221618a2519a88b751088059eca382051d06",
+   "bytes": 2187755,
+   "duration_s": 9.25,
+   "size": "1280x720",
+   "fps": 24,
+   "parts": 24,
+   "parts_ok": 24
+  }
+ ]
+}
