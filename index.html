@@ -103,7 +103,7 @@ form.jf{align-items:stretch}.msg{flex-basis:100%;font-size:15px;color:#8A1C1C}.m
 <div class="row"><a class="cta o" href="#how">See how a run works</a></div><p class="promise"><b>Free for beta testers.</b> No card. Tell us what works and what does not.</p><form class="jf" name="incidentaxis-early-list" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" novalidate data-where="hero"><input type="hidden" name="form-name" value="incidentaxis-early-list"><p style="position:absolute;left:-9999px" aria-hidden="true"><label>Do not fill this out <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><label for="em1">Email address</label><input id="em1" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required><button class="cta" type="submit" data-umami-event="join-click" data-umami-event-where="hero-form">Join the free beta</button><div class="msg" role="status" aria-live="polite"></div><div class="trust">One email when your access is ready. No spam, ever.</div></form><p style="margin:14px 0 0;font-size:15px"><a href="demo/" style="color:var(--em);font-weight:600" data-umami-event="preview-click" data-umami-event-where="hero">Preview the screens →</a></p>
 <div class="facts"><span>Radio report, size-up, orders, debrief</span><span>Learn and Test modes</span><span>Works on your phone</span></div>
 </div>
-<div><div class="phone" role="button" tabindex="0" data-k="electric-vehicle-fire" data-n="Electric vehicle fire" data-umami-event="tile-open" data-umami-event-scenario="Hero phone video" data-src="loops/electric-vehicle-fire-portrait.mp4" aria-label="The app run screen for an electric vehicle fire: the scene fills the phone, with the address, the run timer and the phase indicator, exactly as the app shows it. Tap to watch it larger."><div class="scene" data-loop="loops/electric-vehicle-fire-portrait.mp4"></div><div class="hud"><b>1840 Ridgeview Dr</b><i id="hudT">0:30</i></div><div class="chip">Incident status ▾</div><div class="live"><i></i><span id="hudBarT">Study the scene. Picture your plan.</span></div></div><div class="cap">Sample screen. Illustrative simulation: locations and names are fictionalized.</div></div>
+<div><div class="phone" role="button" tabindex="0" data-k="electric-vehicle-fire" data-n="Electric vehicle fire" data-umami-event="tile-open" data-umami-event-scenario="Hero phone video" data-src="loops/electric-vehicle-fire-portrait.mp4" aria-label="The app run screen for an electric vehicle fire: the scene fills the phone, with the address and the run timer. Tap to watch it larger."><div class="scene" data-loop="loops/electric-vehicle-fire-portrait.mp4"></div><div class="hud"><b>1840 Ridgeview Dr</b><i id="hudT">0:30</i></div></div></div>
 </div></section>
 
 
@@ -222,14 +222,11 @@ if(window.umami&&umami.track)umami.track('signup-success',{where:f.dataset.where
  d.addEventListener('close',function(){if(v){v.pause();v.remove();v=null}var i=m.querySelector('img');if(i)i.remove()});
 })();
 </script><script>
-(function(){var t=document.getElementById('hudT'),b=document.getElementById('hudBarT');if(!t||!b)return;var dot=b.parentElement.querySelector('i');
-var PH=[['study',30],['dispatch',7],['live',120]],pi=0,left=30,on=true;
+(function(){var t=document.getElementById('hudT');if(!t)return;
+var PH=[30,7,120],pi=0,left=30,on=true;
 function fm(s){return Math.floor(s/60)+':'+('0'+(s%60)).slice(-2)}
-function show(){var p=PH[pi][0];
-if(p==='study'){t.textContent=fm(left);b.textContent='Study the scene. Picture your plan.';if(dot)dot.style.visibility='visible'}
-else if(p==='dispatch'){t.textContent='2:00';b.textContent='Dispatch';if(dot)dot.style.visibility='hidden'}
-else{t.textContent=fm(left);b.textContent='Your turn \u00b7 mic is live';if(dot)dot.style.visibility='visible'}}
-show();setInterval(function(){if(!on||document.hidden)return;left--;if(left<0){pi=(pi+1)%3;left=PH[pi][1]}show()},1000);
+function show(){t.textContent=(pi===1)?'2:00':fm(left)}
+show();setInterval(function(){if(!on||document.hidden)return;left--;if(left<0){pi=(pi+1)%3;left=PH[pi]}show()},1000);
 if('IntersectionObserver' in window){new IntersectionObserver(function(e){on=e[0].isIntersecting},{threshold:.2}).observe(t)}})();
 </script>
 </body></html>
