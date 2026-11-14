@@ -376,6 +376,7 @@ function setPage(i){pi=(i+PG.length)%PG.length;PG[pi][1]();$('fnum').textContent
 $('pages').innerHTML=PG.map(function(p,i){return '<button type="button" data-i="'+i+'">'+p[0]+'</button>'}).join('');
 $('pages').onclick=function(e){var b=e.target.closest('button');if(b){setPage(+b.dataset.i);ds.classList.remove('on');db.setAttribute('aria-expanded','false')}};
 $('fprev').onclick=function(){setPage(pi-1)};$('fnext').onclick=function(){setPage(pi+1)};
+setPage(0);
 render();
 })();
 </script>
