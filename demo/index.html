@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset=utf8><meta name="robots" content="noindex,nofollow"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name="robots" content="noindex,nofollow"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><script defer src="https://cloud.umami.is/script.js" data-website-id="90ba6962-c536-480d-b74c-643565071938"></script></head><body>
 <link rel="manifest" href="manifest-app.webmanifest"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"><meta name="theme-color" content="#0B1015"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
 <title>IncidentAxis App</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -110,7 +110,7 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--ember2);outline
 .ind .eq{display:flex;gap:3px;align-items:center;height:20px}.ind .eq i{width:3px;height:20px;background:#E3EAF0;border-radius:2px;transform:scaleY(.3);animation:eqv 1s ease-in-out infinite}
 .ind .eq i:nth-child(2n){animation-delay:.15s}.ind .eq i:nth-child(3n){animation-delay:.3s}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.vid video.fit{object-fit:contain}
 .talk{position:absolute;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 34px);transform:translateX(-50%);width:84px;height:84px;border-radius:50%;border:0;background:var(--ember);color:#1A0B05;font:700 18px var(--f-disp);letter-spacing:.08em;text-transform:uppercase;z-index:3;box-shadow:0 0 0 8px rgba(232,100,63,.22)}
 .talk::after{content:"";position:absolute;inset:-14px;border-radius:50%;border:2px solid rgba(232,100,63,.5);animation:ring 1.8s ease-out infinite}
 @keyframes ring{from{transform:scale(.8);opacity:1}to{transform:scale(1.25);opacity:0}}
@@ -174,7 +174,7 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--ember2);outline
   <button type="button" class="dbtn" id="dbtn" aria-expanded="false">Demo</button>
   <div class="flip" role="group" aria-label="Flip through screens"><button type="button" id="fprev" aria-label="Previous screen">‹</button><span id="fnum">1/30</span><button type="button" id="fnext" aria-label="Next screen">›</button></div>
   <div class="dsheet" id="dsheet">
-    <p class="small">Review controls. Not part of the product.</p>
+    <p class="small">Screen preview \u2014 not the interactive app. Review controls. Not part of the product.</p>
     <div class="pages" id="pages"></div>
     <button type="button" id="d-cred"></button>
     <button type="button" id="d-low">Individual credits: set to 6 (tap again to restore)</button>
@@ -197,7 +197,18 @@ function rem(){var e=(Date.now()-PT)/1000;if(S.phase==='study')return STUDY-e;if
 function tick(){var e=document.getElementById('tmr');if(!e||S.scr!=='scene')return;var r=rem();e.textContent=fm(r);e.classList.toggle('low',r<=10&&S.phase!=='dispatch');
  if(S.phase!=='study'&&S.phase!=='dispatch'&&r<=0&&!S.done){S.done=true;clr();S.tone='bad';S.cue='Time is up.';render();T=setTimeout(function(){go('result')},2500)}}
 setInterval(tick,500);
-var CLIPS={}; /* drop-in: CLIPS['Electric vehicle fire']={portrait:'url',landscape:'url',poster:'url'} once a clip is approved */
+var CLIPS={
+'Electric vehicle fire':{portrait:'../loops/electric-vehicle-fire-portrait.mp4',landscape:'../loops/electric-vehicle-fire-loop.mp4',poster:'../assets/posters/electric-vehicle-fire.jpg'},
+'Single-family house fire':{portrait:'../loops/single-family-house-loop.mp4',landscape:'../loops/single-family-house-loop.mp4',poster:'../assets/posters/single-family-house.jpg'},
+'Commercial smoke':{portrait:'../loops/northgate-storage-loop.mp4',landscape:'../loops/northgate-storage-loop.mp4',poster:'../assets/posters/northgate-storage.jpg'},
+'Vehicle accident':{portrait:'../loops/vehicle-accident-loop.mp4',landscape:'../loops/vehicle-accident-loop.mp4',poster:'../assets/posters/vehicle-accident.jpg'},
+'Cliff rescue':{portrait:'../loops/cliff-rescue-loop.mp4',landscape:'../loops/cliff-rescue-loop.mp4',poster:'../assets/posters/cliff-rescue.jpg'},
+'Hazardous materials':{portrait:'../loops/freeway-hazmat-loop.mp4',landscape:'../loops/freeway-hazmat-loop.mp4',poster:'../assets/posters/freeway-hazmat.jpg'},
+'Kitchen fire, residential street':{portrait:'../loops/kitchen-fire-dynamic-loop.mp4',landscape:'../loops/kitchen-fire-dynamic-loop.mp4',poster:'../assets/posters/kitchen-fire-dynamic.jpg'},
+'Apartment fire':{portrait:'../loops/apartment-fire-loop.mp4',landscape:'../loops/apartment-fire-loop.mp4',poster:'../assets/posters/apartment-fire.jpg'},
+'Vegetation Fire':{portrait:'../loops/vegetation-fire-loop.mp4',landscape:'../loops/vegetation-fire-loop.mp4',poster:'../assets/posters/vegetation-fire.jpg'},
+'Apartment fire with rescue':{portrait:'../loops/apartment-fire-with-rescue-loop.mp4',landscape:'../loops/apartment-fire-with-rescue-loop.mp4',poster:'../assets/posters/apartment-fire-with-rescue.jpg'}}; /* approved landing loops wired 2026-11-14 (Bumble, #235 ruling): same files as the scenario tiles; portrait falls back to the landscape encode where no portrait encode exists */
+function _trk(n,d){var a=0;(function t(){if(window.umami&&umami.track){umami.track(n,d)}else if(a++<12){setTimeout(t,500)}})()}
 var S={devs:[{n:'Phone',d:'Oct 3',cur:1},{n:'Tablet',d:'Oct 20'}],phase:'dispatch',scr:'start',acct:'',plan:'basic',cr:38,extra:0,newInd:false,pack:100,fromAcct:false,mode:'test',kind:'static',name:'Electric vehicle fire',mic:false,pull:false,tone:'',cue:'',credits:true,ended:false};
 var SC={static:['Electric vehicle fire','Single-family house fire','Commercial smoke','Vehicle accident','Cliff rescue','Hazardous materials'],dynamic:['Kitchen fire, residential street','Apartment fire','Vegetation Fire','Apartment fire with rescue']};
 var $=function(i){return document.getElementById(i)},scr=$('scr'),T=null;
@@ -240,7 +251,7 @@ devices:function(){return bar('signin')+'<div class="col grow" style="justify-co
 ready:function(){var u=STILLS[S.name];return bar('home')+'<div class="col grow" style="padding-bottom:24px"><div class="hero'+(u?'':' ph0')+'"'+(u?' style="background-image:url('+u+')"':'')+'></div><div><h1 class="h1" style="font-size:40px;margin:0">'+S.name+'</h1><span class="bd '+(S.kind==='dynamic'?'dyn':'')+'" style="margin-top:8px;display:inline-block">'+S.kind+'</span></div><div class="seg"><button type="button" class="'+(S.mode==='learn'?'on':'')+'" data-go="ready" data-mode="learn"><b>Learn</b><span>Watch and listen</span></button><button type="button" class="'+(S.mode==='test'?'on':'')+'" data-go="ready" data-mode="test"><b>Test</b><span>Command it. Scored</span></button></div><button type="button" class="btn" data-go="'+(S.credits?'scene':'nocred')+'">Start</button></div>';},
 disp:function(){return '<div class="col grow" style="justify-content:center;align-items:center;text-align:center;padding:0 10px" data-go="scene"><p class="h2">Dispatch</p><div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p class="small" style="margin:0">Listen. Tap to go straight to the scene.</p></div>';},
 scene:function(){var cl=CLIPS[S.name],land=window.innerWidth>window.innerHeight,src=cl&&(land?cl.landscape:cl.portrait);
-  var si=SCENEIMG[S.name],media=src?'<video src="'+src+'" '+(cl.poster?'poster="'+cl.poster+'" ':'')+'autoplay playsinline></video>':(si?'<div class="still" style="background-image:url('+(land?si.l:si.p)+')"></div>':'<div class="smoke"></div><div class="ph">'+S.name+' · approved clip goes here</div>');
+  var fit=cl&&!land&&cl.portrait===cl.landscape,si=SCENEIMG[S.name],media=src?'<video src="'+src+'" '+(fit?'class="fit" ':'')+(cl.poster?'poster="'+cl.poster+'" ':'')+'autoplay muted loop playsinline preload="auto"></video>':(si?'<div class="still" style="background-image:url('+(land?si.l:si.p)+')"></div>':'<div class="smoke"></div><div class="ph">'+S.name+' · approved clip goes here</div>');
   var ind=S.phase==='study'?'<div class="ind"><span class="dot"></span>Study the scene. Picture your plan.</div>':S.phase==='dispatch'?'<div class="ind"><span class="eq"><i></i><i></i><i></i><i></i><i></i></span>Dispatch</div>':(S.mode==='test'?'<div class="ind"><span class="dot"></span>Your turn · mic is live</div>':'<div class="ind"><span class="eq"><i></i><i></i><i></i><i></i><i></i></span>Model size-up</div>');
   var hud='<div class="hud"><div class="ad"><b>'+(ADDR[S.name]||'Sample address')+'</b></div><div class="tm" id="tmr" aria-label="Time left">'+fm(rem())+'</div></div>';
   return '<div class="vid '+S.tone+(S.mode==='test'&&S.phase!=='study'?' tst':'')+'">'+media+hud+(S.mode==='test'&&S.phase!=='study'?'<button type="button" class="stbtn" id="stbtn">Incident status ▾</button>':'')+'<div class="pull'+(S.pull?' on':'')+'" id="pull">'+(function(){var t=S.tone==='bad'?1:S.tone==='good'?2:0,N=[['Holding','The fire is not spreading, but it is not under control yet. Your orders have not changed it.'],['Worsening','Conditions are getting worse. Give an order or call for more help.'],['Improving','Your orders are working. Keep going.']][t];return '<div class="k">Incident status</div><div class="v">'+N[0]+'</div><p class="stx">'+N[1]+'</p><div class="scale"><span class="'+(t===1?'on':'')+'">Worsening</span><span class="'+(t===0?'on':'')+'">Holding</span><span class="'+(t===2?'on':'')+'">Improving</span></div><div class="k" style="margin-top:12px">Based on what you have ordered. Swipe up to close.</div>';})()+'</div>'+(S.cue?'<div class="cue">'+S.cue+'</div>':'')+(S.ended?'':ind)+(S.ended?'<div style="position:absolute;inset:auto 0 0 0;padding:20px;background:linear-gradient(transparent,#000);z-index:6"><button type="button" class="btn" data-go="result">See result</button></div>':'')+'</div>';},
@@ -352,12 +363,14 @@ var IND=[
 var CAP_IND=['Start','Create account','Enter email code','Choose a plan','Pay securely','Welcome','Scenarios with credit meter','Scenarios, running low','Scenario: Learn or Test with cost','Result with credits used','Add credits','Credits added','Out of credits','Account, plan and devices','Cancel plan','Card did not go through'];
 PG=IND.concat(PG.map(function(p){return [p[0]+' (department)',_dept(p[1])]}));
 CAPS=CAP_IND.concat(CAPS.map(function(c){return c+' (department)'}));
-function setPage(i){pi=(i+PG.length)%PG.length;PG[pi][1]();$('fnum').textContent=(pi+1)+'/'+PG.length;var fc=$('fcap');if(!fc){fc=document.createElement('div');fc.id='fcap';document.body.appendChild(fc)}fc.textContent=CAPS[pi]||'';fc.style.opacity=1;clearTimeout(fc._t);fc._t=setTimeout(function(){fc.style.opacity=0},2200);
+var RUNP=['Scene: dispatch playing (department)','Scene: 30 s to study (department)','Scene: your turn (Test) (department)','Scene: status pulled down (department)','Result: Test (department)','Result: Learn (department)'];
+var _rp=[],_rx=[];PG.forEach(function(p,i){var r=RUNP.indexOf(p[0]);if(r>-1){_rp[r]=[p,CAPS[i]]}else{_rx.push([p,CAPS[i]])}});_rp=_rp.filter(Boolean);var _all=_rp.concat(_rx);PG=_all.map(function(x){return x[0]});CAPS=_all.map(function(x){return x[1]});
+function setPage(i){pi=(i+PG.length)%PG.length;PG[pi][1]();_trk('demo-slide',{index:pi+1,page:PG[pi][0]});$('fnum').textContent=(pi+1)+'/'+PG.length;var fc=$('fcap');if(!fc){fc=document.createElement('div');fc.id='fcap';document.body.appendChild(fc)}fc.textContent=CAPS[pi]||'';fc.style.opacity=1;clearTimeout(fc._t);fc._t=setTimeout(function(){fc.style.opacity=0},2200);
   document.querySelectorAll('#pages button').forEach(function(b,j){b.classList.toggle('on',j===pi)});}
 $('pages').innerHTML=PG.map(function(p,i){return '<button type="button" data-i="'+i+'">'+p[0]+'</button>'}).join('');
 $('pages').onclick=function(e){var b=e.target.closest('button');if(b){setPage(+b.dataset.i);ds.classList.remove('on');db.setAttribute('aria-expanded','false')}};
 $('fprev').onclick=function(){setPage(pi-1)};$('fnext').onclick=function(){setPage(pi+1)};
-render();
+setPage(0);_trk('demo-open',{});
 })();
 </script>
 
