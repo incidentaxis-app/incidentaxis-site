@@ -1,0 +1,101 @@
+{
+ "note": "Tile rebinds + living takes, encoded by Bumble 2026-11-14. Recipe (same as the cleared hero/tanker): scale 1280x720, 0.8s tail-to-head crossfade (xfade, output 9.25s), CRF 20, faststart, no audio. Reassemble each file from its loops/<name>.b64.partNN files in order, base64 -d, verify SHA-256, then bind over loops/<name>.",
+ "entries": [
+  {
+   "target_path": "loops/apartment-fire-loop.mp4",
+   "source": "pack master apartment-1-loop.mp4",
+   "sha256": "bf1a97a998639cbf586ae3a37e1a6f618961dc1e6fc245aaf4a5b65b83943c8b",
+   "bytes": 1622547,
+   "duration_s": 9.25,
+   "size": "1280x720",
+   "fps": 24,
+   "mean_step_320x180": 3.01,
+   "parts": 18,
+   "parts_ok": 18
+  },
+  {
+   "target_path": "loops/apartment-fire-with-rescue-loop.mp4",
+   "source": "pack master apartment-2-loop.mp4",
+   "sha256": "75456cdd6a9db876cbbdb51ad85c06ee942b5af6e21eefe711c54e8280851acf",
+   "bytes": 1513859,
+   "duration_s": 9.25,
+   "size": "1280x720",
+   "fps": 24,
+   "mean_step_320x180": 2.565,
+   "parts": 17,
+   "parts_ok": 17
+  },
+  {
+   "target_path": "loops/cliff-rescue-loop.mp4",
+   "source": "LIVING TAKE: CL-cliff-static-landscape-KLINGDIRECT-20261027.mp4 (same scene as the frozen master, ocean motion measured strongest)",
+   "sha256": "bbdf37422d38a25a5860659d6a3b58599e4471d17422a79e04ba675e3908ae73",
+   "bytes": 3395805,
+   "duration_s": 9.25,
+   "size": "1280x720",
+   "fps": 24,
+   "mean_step_320x180": 4.651,
+   "parts": 37,
+   "parts_ok": 37
+  },
+  {
+   "target_path": "loops/kitchen-fire-dynamic-loop.mp4",
+   "source": "pack master ellery-house-fire-loop.mp4 (the Ellery kitchen-origin fire; frame-matched to the tile)",
+   "sha256": "2db0993e49283a9836d063a8fd824fd246ef43d5e12f462c510f4fce54b7eb8e",
+   "bytes": 1427870,
+   "duration_s": 9.25,
+   "size": "1280x720",
+   "fps": 24,
+   "mean_step_320x180": 4.068,
+   "parts": 16,
+   "parts_ok": 16
+  },
+  {
+   "target_path": "loops/northgate-storage-loop.mp4",
+   "source": "pack master northgate-storage-loop.mp4",
+   "sha256": "9a41e3a35fa3bb327ebdb8ddc057cbc0bae0de2a0971b5e18a206017bbbf2e8d",
+   "bytes": 1348904,
+   "duration_s": 9.25,
+   "size": "1280x720",
+   "fps": 24,
+   "mean_step_320x180": 3.142,
+   "parts": 15,
+   "parts_ok": 15
+  },
+  {
+   "target_path": "loops/single-family-house-loop.mp4",
+   "source": "pack master single-family-house-loop.mp4",
+   "sha256": "0fb99bf13626e882cce9a63f81e3a202548c871427ce6b5bfeae79a117f8ec5c",
+   "bytes": 737760,
+   "duration_s": 9.25,
+   "size": "1280x720",
+   "fps": 24,
+   "mean_step_320x180": 0.554,
+   "parts": 9,
+   "parts_ok": 9
+  },
+  {
+   "target_path": "loops/vegetation-fire-loop.mp4",
+   "source": "pack master vegetation-fire-loop.mp4",
+   "sha256": "7813b15d6cd3704116f2c1d5e9c6870c9646fce944fb8411b5a660c31c0ce7b2",
+   "bytes": 1359150,
+   "duration_s": 9.25,
+   "size": "1280x720",
+   "fps": 24,
+   "mean_step_320x180": 1.227,
+   "parts": 15,
+   "parts_ok": 15
+  },
+  {
+   "target_path": "loops/vehicle-accident-loop.mp4",
+   "source": "LIVING TAKE: ACC-S2-FRONT-landscape-v1-20261110.mp4 (same scene as the frozen S1 master, highest measured motion of the scene takes)",
+   "sha256": "2629717fdc366f9deb42c8b898c9abd13ef99216e8fce093219598961c56cee4",
+   "bytes": 1619095,
+   "duration_s": 9.25,
+   "size": "1280x720",
+   "fps": 24,
+   "mean_step_320x180": 0.937,
+   "parts": 18,
+   "parts_ok": 18
+  }
+ ]
+}
