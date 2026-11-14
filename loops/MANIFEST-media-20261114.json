@@ -1,0 +1,224 @@
+{
+ "handoff": "Bumble media handoff 2026-11-14 for incidentaxis-app/incidentaxis-site",
+ "note": "Binary media travels as base64 text parts because the connector snapshot route is UTF-8 only (same pattern as the 2026-10-26 EV handoff). Reassemble: cat <file>.b64.part* | base64 -d > <file>, then verify sha256 of the result against this manifest before use.",
+ "items": [
+  {
+   "file": "ev-house-loop-long-v1-20261113.mp4",
+   "bytes": 7314193,
+   "sha256": "ea600b97e2906ded26deeb1402bf7ed16728949d698e40376404c17cbc2ceb8b",
+   "parts": [
+    {
+     "name": "ev-house-loop-long-v1-20261113.mp4.b64.part00",
+     "bytes": 690000,
+     "sha256": "8ac0f58d9547848bd8a6ac5feb3fa4d5359013b29f9d397188ee256fd580732e"
+    },
+    {
+     "name": "ev-house-loop-long-v1-20261113.mp4.b64.part01",
+     "bytes": 690000,
+     "sha256": "a4d07d078dcf73a0f58ba37798a1704370253bf996520ba327b442b8ff2b62cb"
+    },
+    {
+     "name": "ev-house-loop-long-v1-20261113.mp4.b64.part02",
+     "bytes": 690000,
+     "sha256": "2952575557a189dad9abe24abc393e60a6e600e014616952f2bea255cc43978f"
+    },
+    {
+     "name": "ev-house-loop-long-v1-20261113.mp4.b64.part03",
+     "bytes": 690000,
+     "sha256": "6aec85013674a0dff6f0e5af57d00c9e182578c4fb8b906656633ccedd8f8d2f"
+    },
+    {
+     "name": "ev-house-loop-long-v1-20261113.mp4.b64.part04",
+     "bytes": 690000,
+     "sha256": "4aaa6fcdccf90c4d2acc30c152b0472532421c2e8bdd89870ad996fbe6f66086"
+    },
+    {
+     "name": "ev-house-loop-long-v1-20261113.mp4.b64.part05",
+     "bytes": 690000,
+     "sha256": "7876b60f1ae9915ba09d06257c8320d849ac274a8ed378db587fe5d29b11d497"
+    },
+    {
+     "name": "ev-house-loop-long-v1-20261113.mp4.b64.part06",
+     "bytes": 690000,
+     "sha256": "584af0f4e4bc947f9995bd80123d18a1e26439738302fe0c32b8808c682f557f"
+    },
+    {
+     "name": "ev-house-loop-long-v1-20261113.mp4.b64.part07",
+     "bytes": 690000,
+     "sha256": "2dc4ea67598657bf74348b116e3dde4d23a702071975fb33d0d74c60b35b0bd6"
+    },
+    {
+     "name": "ev-house-loop-long-v1-20261113.mp4.b64.part08",
+     "bytes": 690000,
+     "sha256": "ad83584bab9e388e0d2b580b57f89e6d77a737e9725ca9c797e027c2fae2b360"
+    },
+    {
+     "name": "ev-house-loop-long-v1-20261113.mp4.b64.part09",
+     "bytes": 690000,
+     "sha256": "ba843dd59cf6d6dcdfb6abde16586a6a5c843c1ad1b3b31b78e7ceb7399ee148"
+    },
+    {
+     "name": "ev-house-loop-long-v1-20261113.mp4.b64.part10",
+     "bytes": 690000,
+     "sha256": "728ec19ce41c1ef828ca46b244c9229b4a3017142f5de3a77185810c72a73c03"
+    },
+    {
+     "name": "ev-house-loop-long-v1-20261113.mp4.b64.part11",
+     "bytes": 690000,
+     "sha256": "b4c2e2a4a9bbe5d2893bcdb8fe9c558873b6757e3bcc42c5571af5c8da1de671"
+    },
+    {
+     "name": "ev-house-loop-long-v1-20261113.mp4.b64.part12",
+     "bytes": 690000,
+     "sha256": "c1095f106ea4f0a85c6d612f7476c171f6e187b27cc5ef08f356c9da68005d34"
+    },
+    {
+     "name": "ev-house-loop-long-v1-20261113.mp4.b64.part13",
+     "bytes": 690000,
+     "sha256": "84154e67473b3e98562d9234d1d877a6557ff07be7c98b1603d3f679cbab4a0a"
+    },
+    {
+     "name": "ev-house-loop-long-v1-20261113.mp4.b64.part14",
+     "bytes": 92260,
+     "sha256": "ac3c290332b2f8b1a4f72f228c64719d2d936c10b27d8104fcb9dc7acb83ac41"
+    }
+   ]
+  },
+  {
+   "file": "vegetation-fire-dynamic-loop.mp4",
+   "bytes": 11420185,
+   "sha256": "ac09bcc7ab2f9a4b4a8b8c22f2e1b6421be49a92a3263ff4a8eba81d11561c61",
+   "parts": [
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part00",
+     "bytes": 690000,
+     "sha256": "f35d42218e0b20c1174be4b2e4c0725a9577697b6c0f755753db5e07568c244c"
+    },
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part01",
+     "bytes": 690000,
+     "sha256": "48259a2d185ba06fcd72b6bec39744d5860b818fcf7423d7e6cba425e2edabf4"
+    },
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part02",
+     "bytes": 690000,
+     "sha256": "154b2372f4d7d1edcc2cd533dadf146dc3ec6159c04d549141d0692874a0bb9d"
+    },
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part03",
+     "bytes": 690000,
+     "sha256": "d0cd53e8a2d0abe6f09ea5c5877830e2741a3bb55ab655b6ebfb6531fb8fc64e"
+    },
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part04",
+     "bytes": 690000,
+     "sha256": "6b9c9d29e16be020b2774113aab7ae54f1ccc5a882bad1b5b32412b6de7fe417"
+    },
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part05",
+     "bytes": 690000,
+     "sha256": "e1e117facd6e8e2b654107b0161be288745199ad7a18d58d1cb7a9e99e31e167"
+    },
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part06",
+     "bytes": 690000,
+     "sha256": "b217712e62fc6d29713f9ce0fa6bb44d3df63259a30783def1bfc2ccaedfa6a2"
+    },
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part07",
+     "bytes": 690000,
+     "sha256": "294a0b3f3e7812edd321895a65750693709db98a3f973915862f3103038c53af"
+    },
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part08",
+     "bytes": 690000,
+     "sha256": "6f3a483ac7e3eca3c29a9027f088b967f1ed0d910ee4ba25d25920adb056a9b7"
+    },
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part09",
+     "bytes": 690000,
+     "sha256": "e7eb8e5a20539ed8449c39c6c0b06628c9fbb61beac58b117ade49316c7e3d7b"
+    },
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part10",
+     "bytes": 690000,
+     "sha256": "4e2256ca353e33863ae4eec93a15080ae76cef3e994d36e124a8d50f1f0d3b01"
+    },
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part11",
+     "bytes": 690000,
+     "sha256": "1ca56c8ade88c3b2ea0bea2e69af95268f4c07c1c388e74f9c3cf1fa93fea3ea"
+    },
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part12",
+     "bytes": 690000,
+     "sha256": "fee3d00c95e0d5a3b00f290f75d6248ed5e7b9e6d05ee51a331624ec539dd16e"
+    },
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part13",
+     "bytes": 690000,
+     "sha256": "87e0db69b922505c7df911a50764c9bae40b72675dd9306454097558f457a269"
+    },
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part14",
+     "bytes": 690000,
+     "sha256": "4a4bf642d9beff79c6bc823d5c9e10d8346c5ba900402ffe163776bb1ccd8253"
+    },
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part15",
+     "bytes": 690000,
+     "sha256": "8a0f1145b7dc18d4dd40dd77de3acb00256074c017e04ad0b371d7de1bf5c686"
+    },
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part16",
+     "bytes": 690000,
+     "sha256": "401f0dab263620d8e24bfb70aa10e8190706bcc4a0bd88ac1928c6223dd82bc2"
+    },
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part17",
+     "bytes": 690000,
+     "sha256": "3c4ffbf581e5a0c68f807d9bc93eb791028bf4163bcb8521e4ecd6733d9832b8"
+    },
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part18",
+     "bytes": 690000,
+     "sha256": "d4639667d5191410a70c6528c1321c49ffad2ec04ae03e62bae16d2feffc7813"
+    },
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part19",
+     "bytes": 690000,
+     "sha256": "1fa1f2499c3fbb6a79b599078789b75225080f2dc76569f844b937af115ac13a"
+    },
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part20",
+     "bytes": 690000,
+     "sha256": "fde2ca32733cbedc7dcac4c5db04abeca6458ed3853c075020533ce56208ec9d"
+    },
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part21",
+     "bytes": 690000,
+     "sha256": "23fcce0d31ed27b6dbbe4c8608fe01ea05a232f2c5dd967282c95e4f96608548"
+    },
+    {
+     "name": "vegetation-fire-dynamic-loop.mp4.b64.part22",
+     "bytes": 46916,
+     "sha256": "031be79720ca3261e93c73426656c1f8667ae77fb358915caf6efcf90536fbf3"
+    }
+   ]
+  },
+  {
+   "file": "assets/posters/ev-house-loop-long-poster.jpg",
+   "bytes": 131074,
+   "sha256": "4736227c2d899293243414a1b7a66af5abd6e85bd57e176ae73ce68a6ec5fa5a",
+   "b64_file": "assets/posters/ev-house-loop-long-poster.jpg.b64",
+   "b64_bytes": 174768
+  },
+  {
+   "file": "assets/posters/vegetation-fire-dynamic.jpg",
+   "bytes": 256762,
+   "sha256": "f7dda16807831320bfeeee38434f542455b84c4f5e9874e388d95e9e44b57eee",
+   "b64_file": "assets/posters/vegetation-fire-dynamic.jpg.b64",
+   "b64_bytes": 342352
+  }
+ ]
+}
