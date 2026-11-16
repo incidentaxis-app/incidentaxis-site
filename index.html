@@ -14,6 +14,7 @@
 body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 var(--s);padding-bottom:env(safe-area-inset-bottom,0px)}
 a{color:inherit}a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #1F5FA8;outline-offset:3px}
 .skip{position:absolute;left:-9999px;top:8px;background:var(--ink);color:#fff;padding:12px 18px;z-index:99}.skip:focus{left:8px}
+.sr{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .w{max-width:1160px;margin:0 auto;padding:0 max(24px,env(safe-area-inset-left,0px)) 0 max(24px,env(safe-area-inset-right,0px))}
 header{position:sticky;top:0;z-index:20;background:rgba(242,244,246,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
 header .w{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
@@ -28,9 +29,10 @@ h1{font-size:clamp(40px,7.4vw,92px);line-height:.93;font-weight:700}
 h2{font-size:clamp(36px,5vw,56px);line-height:1;font-weight:700}
 h3{font-size:28px;font-weight:700;line-height:1.05}
 .hero{padding:56px 0 72px}.hero .w{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
-.hero p.lead{font-size:20px;max-width:30em;margin:20px 0 28px}
+.hero p.lead{font-size:20px;max-width:30em;margin:16px 0 20px}
 .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .facts{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:26px;font:15px/1.4 var(--m);color:var(--ink)}.facts span::before{content:"";display:inline-block;width:8px;height:8px;background:var(--em);margin-right:8px}
+.hlink{margin:14px 0 0;text-align:center;font-size:16px}.hlink a{color:var(--em);font-weight:600;display:inline-flex;align-items:center;min-height:44px}
 /* phone */
 .phone{width:min(300px,100%);margin:0 auto;aspect-ratio:300/620;background:#0B1015;border:9px solid #151C23;border-radius:42px;box-shadow:0 0 0 2px #56626D,0 30px 70px rgba(11,18,24,.35);position:relative;overflow:hidden}
 .phone::before{content:"";position:absolute;top:10px;left:50%;width:78px;height:20px;margin-left:-39px;border-radius:12px;background:#000;z-index:5}
@@ -70,7 +72,7 @@ input[type=email]{flex:1 1 220px;min-width:0;min-height:52px;padding:0 16px;font
 footer{background:var(--ink);color:#B7C3CF;padding:36px 0 calc(36px + env(safe-area-inset-bottom,0px));font-size:14px}footer .w{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between}
 .sticky{display:none}
 @media (max-width:860px){
- .hero .w,.join{grid-template-columns:1fr}.hero{padding-top:36px}.sec{padding-top:60px;padding-bottom:60px}.hide-sm{display:none}form input{flex-basis:100%}form .cta{flex-basis:100%}
+ .hero .w,.join{grid-template-columns:1fr}.hero{padding-top:28px;padding-bottom:48px}.hero .w{gap:24px}.hero .facts{display:none}.sec{padding-top:60px;padding-bottom:60px}.hide-sm{display:none}form input{flex-basis:100%}form .cta{flex-basis:100%}
  .sticky{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(242,244,246,.96);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));gap:10px;align-items:center;justify-content:flex-start}.sticky b{font:700 20px var(--d);text-transform:uppercase}.sticky .cta{min-height:48px}
  body{padding-bottom:84px}
 }
@@ -87,7 +89,7 @@ footer{background:var(--ink);color:#B7C3CF;padding:36px 0 calc(36px + env(safe-a
 .promise{margin:12px 0 0;font-size:17px;color:var(--ink)}.promise b{color:var(--ink)}
 .thanks{display:none;flex-basis:100%;background:var(--ink);color:#fff;border-radius:12px;padding:18px}.thanks h3{font:700 24px var(--d);text-transform:uppercase;margin:0 0 6px}.thanks p{margin:0 0 12px;color:#C9D3DC}.thanks .cta{min-height:44px}
 .kind{align-self:flex-start;font:600 13px var(--m);letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--ink);padding:4px 10px;border-radius:99px}.capt{color:var(--mut);font-size:15px;line-height:1.4}
-form.jf{align-items:stretch}.msg{flex-basis:100%;font-size:15px;color:#8A1C1C}.msg:empty{display:none}.trust{flex-basis:100%;font-size:15px;color:var(--mut)}.ok{flex-basis:100%;background:var(--ink);color:#fff;border-radius:8px;padding:18px;font-size:18px;margin-top:12px}.hero .jf{max-width:520px;margin-top:16px}
+form.jf{align-items:stretch}.msg{flex-basis:100%;font-size:15px;color:#8A1C1C}.msg:empty{display:none}.trust{flex-basis:100%;font-size:15px;color:var(--mut)}.ok{flex-basis:100%;background:var(--ink);color:#fff;border-radius:8px;padding:18px;font-size:18px;margin-top:12px}.hero .jf{max-width:520px;margin-top:0}
 .checks{list-style:none;margin:18px 0 14px;padding:0;display:grid;gap:6px;font-weight:600;font-size:16px}.checks li:before{content:"\2713";color:var(--ok);font-weight:700;margin-right:10px}.fine{font-size:15px;color:var(--mut);margin:14px 0 0}
 .sim{font-size:13px!important}.tag{font-size:13px}.badge{font-size:13px!important}.live{font-size:14px!important}summary{min-height:44px}
 .ok{position:relative}.ok p{margin:0 0 14px;padding-right:36px}.okx{position:absolute;top:6px;right:6px;width:44px;height:44px;background:transparent;border:0;color:#fff;font-size:28px;line-height:1;cursor:pointer;border-radius:4px}.oks{min-height:44px;background:#fff;color:var(--ink)}.oks:hover{background:var(--em2);color:var(--ink)}
@@ -98,13 +100,13 @@ form.jf{align-items:stretch}.msg{flex-basis:100%;font-size:15px;color:#8A1C1C}.m
 
 <main id="top">
 <section class="hero"><div class="w"><div>
-<div class="eyebrow">Incident command trainer for firefighters</div>
-<h1 style="margin-top:14px">Hear the dispatch. Study the scene. Take command.</h1>
-<p class="lead">Practice incident command out loud. Two minutes on Static scenarios, six on Dynamic. Size up, give your orders, and see how the incident answers. Then see exactly what to work on next.</p>
-<div class="row"><a class="cta o" href="#how">See how a run works</a></div><p class="promise"><b>Free for beta testers.</b> No card. Tell us what works and what does not.</p><form class="jf" name="incidentaxis-early-list" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" novalidate data-where="hero"><input type="hidden" name="form-name" value="incidentaxis-early-list"><p style="position:absolute;left:-9999px" aria-hidden="true"><label>Do not fill this out <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><label for="em1">Email address</label><input id="em1" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required><button class="cta" type="submit" data-umami-event="join-click" data-umami-event-where="hero-form">Join the free beta</button><div class="msg" role="status" aria-live="polite"></div><div class="trust">One email when your access is ready. No spam, ever.</div></form>
+<div class="eyebrow">For firefighters</div>
+<h1 style="margin-top:10px">Hear the dispatch. Study the scene. Take command.</h1>
+<p class="lead">Practice incident command out loud. Two minutes Static, six Dynamic.</p>
+<form class="jf" name="incidentaxis-early-list" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" novalidate data-where="hero"><input type="hidden" name="form-name" value="incidentaxis-early-list"><p style="position:absolute;left:-9999px" aria-hidden="true"><label>Do not fill this out <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><label class="sr" for="em1">Email address</label><input id="em1" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required><button class="cta" type="submit" data-umami-event="join-click" data-umami-event-where="hero-form">Join the free beta</button><div class="msg" role="status" aria-live="polite"></div><div class="trust">Free for beta testers. No card, no spam.</div></form>
 <div class="facts"><span>Radio report, size-up, orders, debrief</span><span>Learn and Test modes</span><span>Works on your phone</span></div>
 </div>
-<div><div class="phone" role="button" tabindex="0" data-k="electric-vehicle-fire" data-n="Electric vehicle fire" data-umami-event="tile-open" data-umami-event-scenario="Hero phone video" data-src="loops/electric-vehicle-fire-portrait.mp4" aria-label="The app run screen for an electric vehicle fire: the scene fills the phone, with the address and the run timer. Tap to watch it larger."><div class="scene" data-loop="loops/electric-vehicle-fire-portrait.mp4"></div><div class="hud"><b>1840 Ridgemont Dr</b><i id="hudT">0:30</i></div></div><div class="disp" role="note" aria-label="Dispatch: Engine 1, Engine 2, Engine 3, Engine 4, Engine 5, Truck 1, Battalion 1, Battalion 2 — respond to 1840 Ridgemont Drive, for a confirmed structure fire. Caller reports popping sounds and white vapor from beneath the vehicle."><span class="dlab">Dispatch</span><span id="dispT"></span><span class="cur" aria-hidden="true"></span></div></div>
+<div><div class="phone" role="button" tabindex="0" data-k="electric-vehicle-fire" data-n="Electric vehicle fire" data-umami-event="tile-open" data-umami-event-scenario="Hero phone video" data-src="loops/electric-vehicle-fire-portrait.mp4" aria-label="The app run screen for an electric vehicle fire: the scene fills the phone, with the address and the run timer. Tap to watch it larger."><div class="scene" data-loop="loops/electric-vehicle-fire-portrait.mp4"></div><div class="hud"><b>1840 Ridgemont Dr</b><i id="hudT">0:30</i></div></div><div class="disp" role="note" aria-label="Dispatch: Engine 1, Engine 2, Engine 3, Engine 4, Engine 5, Truck 1, Battalion 1, Battalion 2 — respond to 1840 Ridgemont Drive, for a confirmed structure fire. Caller reports popping sounds and white vapor from beneath the vehicle."><span class="dlab">Dispatch</span><span id="dispT"></span><span class="cur" aria-hidden="true"></span></div><p class="hlink"><a href="#how">See how a run works ↓</a></p></div>
 </div></section>
 
 
@@ -136,8 +138,8 @@ form.jf{align-items:stretch}.msg{flex-basis:100%;font-size:15px;color:#8A1C1C}.m
 <div class="pick" role="group" aria-label="How often will you train?" id="pace"></div>
 <div class="rec" aria-live="polite" id="rec"></div>
 <div class="plans">
-<div class="plan"><h3>Basic</h3><div class="price">$39<small> /MONTH</small></div><div style="color:var(--mut)">50 credits included</div><ul><li>About 16 Static Tests, or about 7 Dynamic Tests</li><li>Learn and Test modes</li><li>Add credits any time at $0.30 each</li><li>Cancel any time</li></ul><a class="cta" href="#join" data-umami-event="join-click" data-umami-event-where="pricing-basic">Join the free beta</a></div>
-<div class="plan hl"><span class="badge">For daily training</span><h3>Daily</h3><div class="price">$99<small> /MONTH</small></div><div style="color:var(--mut)">700 credits included</div><ul><li>4 Static and 2 Dynamic Tests a day, 5 days a week</li><li>Learn and Test modes</li><li>Add credits any time at $0.30 each</li><li>Cancel any time</li></ul><a class="cta" href="#join" data-umami-event="join-click" data-umami-event-where="pricing-daily">Join the free beta</a></div>
+<div class="plan"><h3>Basic</h3><div class="price">$39<small> /MONTH</small></div><div style="color:var(--mut)">50 credits included</div><ul><li>About 16 Static Tests, or about 7 Dynamic Tests</li><li>Learn and Test modes</li><li>Add credits any time at $0.60 each</li><li>Cancel any time</li></ul><a class="cta" href="#join" data-umami-event="join-click" data-umami-event-where="pricing-basic">Join the free beta</a></div>
+<div class="plan hl"><span class="badge">For daily training</span><h3>Daily</h3><div class="price">$99<small> /MONTH</small></div><div style="color:var(--mut)">700 credits included</div><ul><li>4 Static and 2 Dynamic Tests a day, 5 days a week</li><li>Learn and Test modes</li><li>Add credits any time at $0.60 each</li><li>Cancel any time</li></ul><a class="cta" href="#join" data-umami-event="join-click" data-umami-event-where="pricing-daily">Join the free beta</a></div>
 </div>
 <p class="under">Each account works on up to 2 devices, one session at a time, and signs in with an emailed code, so there is no password to share. Prices shown are the planned launch prices.</p>
 </div></section>
@@ -162,9 +164,9 @@ var $=function(i){return document.getElementById(i)};
 var ST=[['Electric vehicle fire','electric-vehicle-fire','First-arriving size-up under a thermal-runaway clock'],['Single-family house fire','single-family-house','Size-up, line placement, exposures'],['Commercial smoke investigation','northgate-storage','Read the smoke, size up, decide your entry'],['Apartment fire — Static','apartment-fire','Multi-story size-up, exposures, resource requests'],['Vegetation fire — Static','vegetation-fire','Wind, fuels, and structure protection'],['Vehicle accident','vehicle-accident','Scene safety, hazards, extrication priorities'],['Cliff rescue','cliff-rescue','Rescue strategy — ground vs air removal'],['Hazardous materials','freeway-hazmat','Isolate, deny entry, identify']],DY=[['Kitchen fire, residential street','kitchen-fire-dynamic','Size up, attack, then adapt as conditions change'],['Apartment fire — Dynamic','apartment-fire','Your orders change what the fire does next'],['Vegetation fire — Dynamic','vegetation-fire-dynamic','Re-size the fire as wind and fuels shift'],['Apartment fire with rescue — Dynamic','apartment-fire-with-rescue','Balance fire attack against a rescue']];
 function cards(a,t){return a.map(function(x){var s=x[0],k=x[1];return '<div class="sc"><div class="ph" role="button" tabindex="0" aria-label="Watch the '+s.toLowerCase()+' preview" data-k="'+k+'" data-n="'+s+'" data-umami-event="tile-open" data-umami-event-scenario="'+s+'" data-loop="loops/'+k+'-loop.mp4"><span class="sim">Simulation</span><img src="assets/posters/'+k+'.jpg" alt="Preview of the '+s.toLowerCase()+' scenario" loading="lazy"></div><b>'+s+'</b><span class="kind">'+t+'</span><span class="capt">'+x[2]+'</span></div>'}).join('')}
 $('st').innerHTML=cards(ST,'Static');$('dy').innerHTML=cards(DY,'Dynamic');
-var PACE=[['A few runs a month',15],['About once a week',35],['Most days',120],['Every training day',700]];
+var PACE=[['A few runs a month',15],['About once a week',35],['Most days',120],['Every training day',560]];
 var sel=1;
-function plan(c){var b=39+Math.max(0,c-50)*.3,d=99;return b<=d?['Basic',b,Math.max(0,c-50)]:['Daily',d,0]}
+function plan(c){var b=39+Math.max(0,c-50)*.6,d=99;return b<=d?['Basic',b,Math.max(0,c-50)]:['Daily',d,0]}
 function draw(){
  $('pace').innerHTML=PACE.map(function(p,i){return '<button type="button" data-i="'+i+'" aria-pressed="'+(i===sel)+'">'+p[0]+'</button>'}).join('');
  var c=PACE[sel][1],r=plan(c);
