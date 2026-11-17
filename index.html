@@ -91,6 +91,7 @@ footer{background:var(--ink);color:#B7C3CF;padding:36px 0 calc(36px + env(safe-a
 .thanks{display:none;flex-basis:100%;background:var(--ink);color:#fff;border-radius:12px;padding:18px}.thanks h3{font:700 24px var(--d);text-transform:uppercase;margin:0 0 6px}.thanks p{margin:0 0 12px;color:#C9D3DC}.thanks .cta{min-height:44px}
 .kind{align-self:flex-start;font:600 13px var(--m);letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--ink);padding:4px 10px;border-radius:99px}.capt{color:var(--mut);font-size:15px;line-height:1.4}
 form.jf{align-items:stretch}.msg{flex-basis:100%;font-size:15px;color:#8A1C1C}.msg:empty{display:none}.trust{flex-basis:100%;font-size:15px;color:var(--mut)}.ok{flex-basis:100%;background:var(--ink);color:#fff;border-radius:8px;padding:18px;font-size:18px;margin-top:12px}.hero .jf{max-width:520px;margin-top:0}
+.cta[disabled]{opacity:.75;cursor:progress}
 .checks{list-style:none;margin:18px 0 14px;padding:0;display:grid;gap:6px;font-weight:600;font-size:16px}.checks li:before{content:"\2713";color:var(--ok);font-weight:700;margin-right:10px}.fine{font-size:15px;color:var(--mut);margin:14px 0 0}
 .sim{font-size:13px!important}.tag{font-size:13px}.badge{font-size:13px!important}.live{font-size:14px!important}summary{min-height:44px}
 .ok{position:relative}.ok p{margin:0 0 14px;padding-right:36px}.okx{position:absolute;top:6px;right:6px;width:44px;height:44px;background:transparent;border:0;color:#fff;font-size:28px;line-height:1;cursor:pointer;border-radius:4px}.oks{min-height:44px;background:#fff;color:var(--ink)}.oks:hover{background:var(--em2);color:var(--ink)}
@@ -190,20 +191,24 @@ var sk=document.querySelector('.sticky'),forms=[].slice.call(document.querySelec
 if(sk){sk.style.display='none';if('IntersectionObserver'in window){var fo=new IntersectionObserver(function(en){en.forEach(function(x){vis[x.target.dataset.where]=x.isIntersecting});upd()});forms.forEach(function(f){fo.observe(f)})}window.addEventListener('scroll',upd,{passive:true});upd()}
 var BAD='That didn\'t go through — check the email address and try again.',DOWN='That didn\'t go through — please try again in a minute, or email marcel@firefighteradvocate.com.';
 document.querySelectorAll('form.jf').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();var inp=f.querySelector('input[type=email]'),m=f.querySelector('.msg'),btn=f.querySelector('button');
+if(btn.disabled)return;
 if(!/^\S+@\S+\.\S+$/.test(inp.value.trim())){m.textContent=BAD;inp.focus();return}
-btn.disabled=true;m.textContent='Saving...';
-fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()})
-.then(function(r){if(!r.ok){m.setAttribute('data-status',r.status);throw r.status}var d=document.createElement('div');d.className='ok';d.setAttribute('role','status');d.tabIndex=-1;
+var oldT=btn.textContent,ac=window.AbortController?new AbortController():null,to=setTimeout(function(){if(ac)ac.abort()},12000),gone=false;
+btn.disabled=true;btn.textContent='Joining...';m.textContent='';
+function fail(msg){if(gone)return;gone=true;clearTimeout(to);btn.textContent=oldT;btn.disabled=false;m.textContent=msg}
+if(!ac){setTimeout(function(){fail(DOWN)},12000)}
+fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString(),signal:ac?ac.signal:undefined})
+.then(function(r){if(gone)return;if(!r.ok){m.setAttribute('data-status',r.status);throw r.status}gone=true;clearTimeout(to);m.textContent='';var d=document.createElement('div');d.className='ok';d.setAttribute('role','status');d.tabIndex=-1;
 var t=document.createElement('p');t.textContent='You\'re on the list — we\'ll email you when your access is ready. No card needed.';
 var x=document.createElement('button');x.type='button';x.className='okx';x.setAttribute('aria-label','Close and show the signup form again');x.innerHTML='&times;';
 var sh=document.createElement('button');sh.type='button';sh.className='cta oks';sh.textContent='Share with a firefighter';sh.setAttribute('data-umami-event','share-click');
 var U='https://incidentaxis.netlify.app/',T='Practice incident command out loud. Free beta:';
 sh.addEventListener('click',function(){if(navigator.share){navigator.share({title:'IncidentAxis',text:T,url:U}).catch(function(){})}else if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(U).then(function(){sh.textContent='Link copied'},function(){window.prompt('Copy this link',U)})}else{window.prompt('Copy this link',U)}});
-x.addEventListener('click',function(){d.replaceWith(f);btn.disabled=false;inp.value='';inp.focus()});
+x.addEventListener('click',function(){d.replaceWith(f);btn.textContent=oldT;btn.disabled=false;inp.value='';inp.focus()});
 d.appendChild(x);d.appendChild(t);d.appendChild(sh);f.replaceWith(d);d.focus();
 joined=true;try{localStorage.setItem('ia_joined','1')}catch(e){}if(typeof upd==='function')upd();
 if(window.umami&&umami.track)umami.track('signup-success',{where:f.dataset.where})})
-.catch(function(c){m.textContent=(c===400||c===422)?BAD:DOWN;btn.disabled=false})})});
+.catch(function(c){fail((c===400||c===422)?BAD:DOWN)})})});
 })();
 
 /* Tile preview: tap a scenario picture to watch the clip larger, with a link to the early list. Prototype preview only; no app sign-up exists yet. */
