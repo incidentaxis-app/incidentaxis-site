@@ -106,7 +106,7 @@ form.jf{align-items:stretch}.msg{flex-basis:100%;font-size:15px;color:#8A1C1C}.m
 <div class="eyebrow">For firefighters</div>
 <h1 style="margin-top:10px">Study the scene. Hear the dispatch. Take command.</h1>
 <p class="lead">Practice incident command out loud. Get scored feedback after every run.</p>
-<form class="jf" name="incidentaxis-early-list" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" novalidate data-where="hero"><input type="hidden" name="form-name" value="incidentaxis-early-list"><p style="position:absolute;left:-9999px" aria-hidden="true"><label>Do not fill this out <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><label class="sr" for="em1">Email address</label><input id="em1" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required><button class="cta" type="submit" data-umami-event="join-click" data-umami-event-where="hero-form">Join the free beta</button><div class="msg" role="status" aria-live="polite"></div></form>
+<form class="jf" name="incidentaxis-early-list" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" novalidate data-where="hero"><input type="hidden" name="form-name" value="incidentaxis-early-list"><input type="hidden" name="source" value=""><input type="hidden" name="campaign" value=""><p style="position:absolute;left:-9999px" aria-hidden="true"><label>Do not fill this out <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><label class="sr" for="em1">Email address</label><input id="em1" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required><button class="cta" type="submit" data-umami-event="join-click" data-umami-event-where="hero-form">Join the free beta</button><div class="msg" role="status" aria-live="polite"></div></form>
 <div class="facts"><span>Radio report, size-up, orders, debrief</span><span>Learn and Test modes</span><span>Works on your phone</span></div>
 </div>
 <div><div class="phone" role="button" tabindex="0" data-k="electric-vehicle-fire" data-n="Electric vehicle fire" data-umami-event="tile-open" data-umami-event-scenario="Hero phone video" data-src="loops/electric-vehicle-fire-portrait.mp4" aria-label="The app run screen for an electric vehicle fire: the scene fills the phone, with the address and the run timer. Tap to watch it larger."><div class="scene" data-loop="loops/electric-vehicle-fire-portrait.mp4"></div><div class="hud"><b>1840 Ridgemont Dr</b><span class="tmw"><span class="hl" id="hudL">Study</span><i id="hudT">0:30</i></span></div></div><button type="button" class="hear" id="hearD" hidden data-umami-event="hear-dispatch"><span id="hearI" aria-hidden="true">▶</span><span id="hearT">Hear the dispatch</span></button><audio id="dispA" preload="none" src="assets/audio/ev-cue1-dispatch.mp3"></audio><div class="disp" role="note" aria-label="Dispatch: Engine 1, Engine 2, Engine 3, Engine 4, Engine 5, Truck 1, Battalion 1, Battalion 2 — respond to 1840 Ridgemont Drive, for a confirmed structure fire. Caller reports popping sounds and white vapor from beneath the vehicle."><span class="dlab">Dispatch</span><span id="dispT"></span><span class="cur" aria-hidden="true"></span></div></div>
@@ -154,7 +154,7 @@ form.jf{align-items:stretch}.msg{flex-basis:100%;font-size:15px;color:#8A1C1C}.m
 
 <section id="join"><div class="w sec"><div class="join">
 <div><h2>Join the free beta</h2><p style="margin:14px 0 0;color:var(--mut)">Beta testers get free access while we test, and the first scenarios as they are finished. We will email you when your access is ready. No card needed.</p></div>
-<ul class="checks"><li>No card needed</li><li>Free during the whole beta</li><li>Works on iPhone and Android</li></ul><form class="jf" name="incidentaxis-early-list" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" novalidate data-where="join"><input type="hidden" name="form-name" value="incidentaxis-early-list"><p style="position:absolute;left:-9999px" aria-hidden="true"><label>Do not fill this out <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><label for="em2">Email address</label><input id="em2" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required><button class="cta" type="submit" data-umami-event="join-click" data-umami-event-where="join-form">Join the free beta</button><div class="msg" role="status" aria-live="polite"></div><div class="trust">One email when your access is ready. No spam, ever.</div></form><p class="fine">To be removed, email <a href="mailto:marcel@firefighteradvocate.com">marcel@firefighteradvocate.com</a>. See our <a href="privacy.html">Privacy Policy</a>.</p>
+<ul class="checks"><li>No card needed</li><li>Free during the whole beta</li><li>Works on iPhone and Android</li></ul><form class="jf" name="incidentaxis-early-list" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" novalidate data-where="join"><input type="hidden" name="form-name" value="incidentaxis-early-list"><input type="hidden" name="source" value=""><input type="hidden" name="campaign" value=""><p style="position:absolute;left:-9999px" aria-hidden="true"><label>Do not fill this out <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><label for="em2">Email address</label><input id="em2" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required><button class="cta" type="submit" data-umami-event="join-click" data-umami-event-where="join-form">Join the free beta</button><div class="msg" role="status" aria-live="polite"></div><div class="trust">One email when your access is ready. No spam, ever.</div></form><p class="fine">To be removed, email <a href="mailto:marcel@firefighteradvocate.com">marcel@firefighteradvocate.com</a>. See our <a href="privacy.html">Privacy Policy</a>.</p>
 </div></div></section>
 </main>
 
@@ -187,6 +187,13 @@ $('faqs').innerHTML=FAQ.map(function(f){return '<details><summary>'+f[0]+'</summ
  document.querySelectorAll('[data-loop]').forEach(function(b){io.observe(b)});
 })();
 var joined=false;try{joined=localStorage.getItem('ia_joined')==='1'}catch(e){}
+/* Which link brought this visitor: ?src= (or utm_source / ref), ?campaign= (or utm_campaign), else the referring site. Saved for the visit and sent with the signup as hidden fields. */
+var SRC='direct',CMP='';
+try{var q=new URLSearchParams(location.search),cl=function(v){return v?v.replace(/[^\w.:\-]/g,'').slice(0,40):''},s=cl(q.get('src')||q.get('utm_source')||q.get('ref')),c=cl(q.get('utm_campaign')||q.get('campaign'));
+var rf='';if(!s&&document.referrer){try{var rh=new URL(document.referrer).hostname.replace(/^www\./,'');if(rh&&rh!==location.hostname)rf='ref:'+cl(rh)}catch(e){}}
+try{if(s)sessionStorage.setItem('ia_src',s);if(c)sessionStorage.setItem('ia_cmp',c);if(!s&&rf&&!sessionStorage.getItem('ia_src'))sessionStorage.setItem('ia_src',rf);s=s||sessionStorage.getItem('ia_src')||rf;c=c||sessionStorage.getItem('ia_cmp')||''}catch(e){s=s||rf}
+SRC=s||'direct';CMP=c}catch(e){}
+document.querySelectorAll('input[name=source]').forEach(function(i){i.value=SRC});document.querySelectorAll('input[name=campaign]').forEach(function(i){i.value=CMP});
 var sk=document.querySelector('.sticky'),forms=[].slice.call(document.querySelectorAll('form.jf')),vis={};function upd(){if(!sk)return;var past=window.scrollY>window.innerHeight*.9,on=Object.keys(vis).some(function(k){return vis[k]});sk.style.display=(past&&!on&&!joined)?'':'none'}
 if(sk){sk.style.display='none';if('IntersectionObserver'in window){var fo=new IntersectionObserver(function(en){en.forEach(function(x){vis[x.target.dataset.where]=x.isIntersecting});upd()});forms.forEach(function(f){fo.observe(f)})}window.addEventListener('scroll',upd,{passive:true});upd()}
 var BAD='That didn\'t go through — check the email address and try again.',DOWN='That didn\'t go through — please try again in a minute, or email marcel@firefighteradvocate.com.';
@@ -207,7 +214,7 @@ sh.addEventListener('click',function(){if(navigator.share){navigator.share({titl
 x.addEventListener('click',function(){d.replaceWith(f);btn.textContent=oldT;btn.disabled=false;inp.value='';inp.focus()});
 d.appendChild(x);d.appendChild(t);d.appendChild(sh);f.replaceWith(d);d.focus();
 joined=true;try{localStorage.setItem('ia_joined','1')}catch(e){}if(typeof upd==='function')upd();
-if(window.umami&&umami.track)umami.track('signup-success',{where:f.dataset.where})})
+if(window.umami&&umami.track)umami.track('signup-success',{where:f.dataset.where,source:SRC})})
 .catch(function(c){fail((c===400||c===422)?BAD:DOWN)})})});
 })();
 
@@ -264,11 +271,11 @@ a.addEventListener('ended',function(){if(!synced)return;dt.textContent=txt;setTi
 function type(){if(synced)return;if(i<=txt.length){dt.textContent=txt.slice(0,i);i++;setTimeout(type,34)}else{setTimeout(function(){if(!synced)hideCur()},2600)}}
 if(still){dt.textContent=txt;hideCur()}
 else if('IntersectionObserver' in window){new IntersectionObserver(function(e,ob){if(e[0].isIntersecting&&!started){started=true;type();ob.disconnect()}},{threshold:.2}).observe(dt)}else{type()}})();
-/* Hear the dispatch: the button only appears once the recorded dispatch file has been added at assets/audio/ev-cue1-dispatch.mp3. */
+/* Hear the dispatch: the button only appears once the recorded dispatch file has been added at assets/audio/ev-cue1-dispatch.mp3. Taps are counted by the button's own analytics tag; a finished play is counted as dispatch-complete. */
 (function(){var b=document.getElementById('hearD'),a=document.getElementById('dispA'),ic=document.getElementById('hearI'),tx=document.getElementById('hearT');if(!b||!a)return;
 function idle(){ic.textContent='▶';tx.textContent='Hear the dispatch'}
 a.addEventListener('loadedmetadata',function(){b.hidden=false});
-a.addEventListener('ended',idle);a.addEventListener('pause',function(){if(a.ended||a.currentTime===0)idle()});
+a.addEventListener('ended',function(){idle();if(window.umami&&umami.track)umami.track('dispatch-complete')});a.addEventListener('pause',function(){if(a.ended||a.currentTime===0)idle()});
 b.addEventListener('click',function(){if(a.paused){var p=a.play();if(p&&p.catch)p.catch(function(){});ic.textContent='❚❚';tx.textContent='Pause'}else{a.pause();idle()}});
 fetch(a.getAttribute('src'),{method:'HEAD'}).then(function(r){if(r.ok){a.preload='metadata';a.load()}}).catch(function(){})
 })();
