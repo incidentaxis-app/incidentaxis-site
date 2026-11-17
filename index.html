@@ -105,7 +105,7 @@ form.jf{align-items:stretch}.msg{flex-basis:100%;font-size:15px;color:#8A1C1C}.m
 <div class="eyebrow">For firefighters</div>
 <h1 style="margin-top:10px">Study the scene. Hear the dispatch. Take command.</h1>
 <p class="lead">Practice incident command out loud. Get scored feedback after every run.</p>
-<form class="jf" name="incidentaxis-early-list" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" novalidate data-where="hero"><input type="hidden" name="form-name" value="incidentaxis-early-list"><p style="position:absolute;left:-9999px" aria-hidden="true"><label>Do not fill this out <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><label class="sr" for="em1">Email address</label><input id="em1" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required><button class="cta" type="submit" data-umami-event="join-click" data-umami-event-where="hero-form">Join the free beta</button><div class="msg" role="status" aria-live="polite"></div><div class="trust">No card needed.</div></form>
+<form class="jf" name="incidentaxis-early-list" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" novalidate data-where="hero"><input type="hidden" name="form-name" value="incidentaxis-early-list"><p style="position:absolute;left:-9999px" aria-hidden="true"><label>Do not fill this out <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><label class="sr" for="em1">Email address</label><input id="em1" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required><button class="cta" type="submit" data-umami-event="join-click" data-umami-event-where="hero-form">Join the free beta</button><div class="msg" role="status" aria-live="polite"></div></form>
 <div class="facts"><span>Radio report, size-up, orders, debrief</span><span>Learn and Test modes</span><span>Works on your phone</span></div>
 </div>
 <div><div class="phone" role="button" tabindex="0" data-k="electric-vehicle-fire" data-n="Electric vehicle fire" data-umami-event="tile-open" data-umami-event-scenario="Hero phone video" data-src="loops/electric-vehicle-fire-portrait.mp4" aria-label="The app run screen for an electric vehicle fire: the scene fills the phone, with the address and the run timer. Tap to watch it larger."><div class="scene" data-loop="loops/electric-vehicle-fire-portrait.mp4"></div><div class="hud"><b>1840 Ridgemont Dr</b><span class="tmw"><span class="hl" id="hudL">Study</span><i id="hudT">0:30</i></span></div></div><button type="button" class="hear" id="hearD" hidden data-umami-event="hear-dispatch"><span id="hearI" aria-hidden="true">▶</span><span id="hearT">Hear the dispatch</span></button><audio id="dispA" preload="none" src="assets/audio/ev-cue1-dispatch.mp3"></audio><div class="disp" role="note" aria-label="Dispatch: Engine 1, Engine 2, Engine 3, Engine 4, Engine 5, Truck 1, Battalion 1, Battalion 2 — respond to 1840 Ridgemont Drive, for a confirmed structure fire. Caller reports popping sounds and white vapor from beneath the vehicle."><span class="dlab">Dispatch</span><span id="dispT"></span><span class="cur" aria-hidden="true"></span></div></div>
@@ -194,7 +194,7 @@ if(!/^\S+@\S+\.\S+$/.test(inp.value.trim())){m.textContent=BAD;inp.focus();retur
 btn.disabled=true;m.textContent='Saving...';
 fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()})
 .then(function(r){if(!r.ok){m.setAttribute('data-status',r.status);throw r.status}var d=document.createElement('div');d.className='ok';d.setAttribute('role','status');d.tabIndex=-1;
-var t=document.createElement('p');t.textContent='You\'re on the list — we\'ll email you when your access is ready.';
+var t=document.createElement('p');t.textContent='You\'re on the list — we\'ll email you when your access is ready. No card needed.';
 var x=document.createElement('button');x.type='button';x.className='okx';x.setAttribute('aria-label','Close and show the signup form again');x.innerHTML='&times;';
 var sh=document.createElement('button');sh.type='button';sh.className='cta oks';sh.textContent='Share with a firefighter';sh.setAttribute('data-umami-event','share-click');
 var U='https://incidentaxis.netlify.app/',T='Practice incident command out loud. Free beta:';
@@ -236,11 +236,28 @@ function reset(){cmd=false;left=30;show()}
 show();setInterval(function(){if(!on||document.hidden)return;left--;if(!cmd&&left<=0){cmd=true;left=120}else if(cmd&&left<0){cmd=false;left=30}show()},1000);
 if('IntersectionObserver' in window){new IntersectionObserver(function(e){var v=e[0].isIntersecting;if(v&&!on)reset();on=v},{threshold:.2}).observe(t)}else{on=true}
 })();
-/* Dispatch text under the phone. */
-(function(){var dt=document.getElementById('dispT');if(!dt)return;
-var txt='Engine 1, Engine 2, Engine 3, Engine 4, Engine 5, Truck 1, Battalion 1, Battalion 2 — respond to 1840 Ridgemont Drive, for a confirmed structure fire. Caller reports popping sounds and white vapor from beneath the vehicle.',i=0,started=false;
-function type(){if(i<=txt.length){dt.textContent=txt.slice(0,i);i++;setTimeout(type,34)}else{var c=dt.parentElement.querySelector('.cur');setTimeout(function(){if(c)c.style.display='none'},2600)}}
-if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){dt.textContent=txt;var c2=dt.parentElement.querySelector('.cur');if(c2)c2.style.display='none'}
+/* Dispatch text under the phone. Types in when it scrolls into view. Once the recorded dispatch plays, the text follows the audio clock (play, pause, seek, replay), letter by letter inside each word's own time window, using measured word start times for ev-cue1-dispatch.mp3 (one entry per word, the dash included). If the times ever do not match the text, it falls back to even pacing across the recording. */
+(function(){var dt=document.getElementById('dispT'),a=document.getElementById('dispA');if(!dt)return;
+var txt='Engine 1, Engine 2, Engine 3, Engine 4, Engine 5, Truck 1, Battalion 1, Battalion 2 — respond to 1840 Ridgemont Drive, for a confirmed structure fire. Caller reports popping sounds and white vapor from beneath the vehicle.',
+words=txt.split(' '),i=0,started=false,synced=false,cur=dt.parentElement.querySelector('.cur'),
+still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,cum=[],tot=0,
+T=[0,.34,1,1.3,2.1,2.4,3.24,3.56,4.54,4.72,5.48,5.94,6.84,7.22,8.04,8.38,8.8,8.94,9.6,9.84,10.52,10.96,11.34,11.76,11.82,12.26,12.68,13.16,13.92,14.24,14.6,15.06,15.32,15.58,15.92,16.16,16.38,16.54];
+if(T.length!==words.length)T=null;
+words.forEach(function(w){cum.push(tot);tot+=w.length+(/,$/.test(w)?4:0)+(w==='—'?6:0)+1});
+function hideCur(){if(cur)cur.style.display='none'}
+function dur(){return(a&&a.duration&&isFinite(a.duration))?a.duration:17.4}
+function textAt(t){var n=words.length,k=-1,j;
+if(T){for(j=0;j<n;j++){if(T[j]<=t)k=j}
+ if(k<0)return '';
+ var end=k+1<n?T[k+1]:Math.max(T[k]+.5,dur()-.2),f=Math.min(1,(t-T[k])/Math.max(.12,(end-T[k])*.8)),w=words[k];
+ return words.slice(0,k).join(' ')+(k?' ':'')+w.slice(0,Math.ceil(w.length*f))}
+var p=Math.max(0,Math.min(1,(t-.3)/Math.max(1,dur()-.6)))*tot,m=0;for(j=0;j<n;j++){if(cum[j]<p)m=j+1}return words.slice(0,m).join(' ')}
+function tick(){if(!synced||a.paused||a.ended)return;dt.textContent=textAt(a.currentTime);requestAnimationFrame(tick)}
+if(a){a.addEventListener('play',function(){if(still)return;synced=true;started=true;if(cur)cur.style.display='';tick()});
+a.addEventListener('seeked',function(){if(synced&&a.paused&&!a.ended)dt.textContent=textAt(a.currentTime)});
+a.addEventListener('ended',function(){if(!synced)return;dt.textContent=txt;setTimeout(hideCur,1200)})}
+function type(){if(synced)return;if(i<=txt.length){dt.textContent=txt.slice(0,i);i++;setTimeout(type,34)}else{setTimeout(function(){if(!synced)hideCur()},2600)}}
+if(still){dt.textContent=txt;hideCur()}
 else if('IntersectionObserver' in window){new IntersectionObserver(function(e,ob){if(e[0].isIntersecting&&!started){started=true;type();ob.disconnect()}},{threshold:.2}).observe(dt)}else{type()}})();
 /* Hear the dispatch: the button only appears once the recorded dispatch file has been added at assets/audio/ev-cue1-dispatch.mp3. */
 (function(){var b=document.getElementById('hearD'),a=document.getElementById('dispA'),ic=document.getElementById('hearI'),tx=document.getElementById('hearT');if(!b||!a)return;
@@ -248,7 +265,7 @@ function idle(){ic.textContent='▶';tx.textContent='Hear the dispatch'}
 a.addEventListener('loadedmetadata',function(){b.hidden=false});
 a.addEventListener('ended',idle);a.addEventListener('pause',function(){if(a.ended||a.currentTime===0)idle()});
 b.addEventListener('click',function(){if(a.paused){var p=a.play();if(p&&p.catch)p.catch(function(){});ic.textContent='❚❚';tx.textContent='Pause'}else{a.pause();idle()}});
-fetch(a.getAttribute('src'),{method:'HEAD'}).then(function(r){if(r.ok){a.preload='metadata';a.load()}}).catch(function(){});
+fetch(a.getAttribute('src'),{method:'HEAD'}).then(function(r){if(r.ok){a.preload='metadata';a.load()}}).catch(function(){})
 })();
 </script>
 </body></html>
