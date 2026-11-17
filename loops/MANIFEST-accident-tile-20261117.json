@@ -1,0 +1,11 @@
+{
+ "file": "vehicle-accident-loop.mp4",
+ "target": "loops/vehicle-accident-loop.mp4",
+ "sha256": "4d85f861d754ea1af57e727280c143a1706b0fa3cbe7bfc3ff69e8541e529ac1",
+ "bytes": 4072524,
+ "parts": 46,
+ "chunk_raw_bytes": 90000,
+ "source": "ACC-LANDINGTILE-landscape-v2-20261114.mp4 (Kling re-render, Bumble QC PASS 2026-11-14: motion ~5x frozen class, officer walks, traffic advances, scene locked)",
+ "encode": "1280x720, CRF 18, faststart, 10.04s, no audio",
+ "note": "Seam blend is the bind step (Claude eased-blend recipe, as PR #27/#28). Owner pass: Marcel approved the five improvements incl. this tile 2026-11-17 (Legal & Domains chat)."
+}
