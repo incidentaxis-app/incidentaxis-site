@@ -14,13 +14,23 @@ const ALERT_TO = "marcel@firefighteradvocate.com";
 const FORM_ID = "6af87d7ce74cf2fd82d31f9e";
 const FORM_NAME = "incidentaxis-early-list";
 
-const WELCOME_SUBJECT = "You're on the IncidentAxis early list";
-const WELCOME_TEXT = `Thanks for joining the early list for IncidentAxis — voice-driven fire officer simulation training, built by a working firefighter.
+const WELCOME_SUBJECT = "You're on the IncidentAxis beta list";
+const WELCOME_TEXT = `Hi,
 
-We're in final production now. When department pilots open, the early list hears first. No spam — just the launch note and pilot invitations.
+Thanks for joining the IncidentAxis beta list. You're in.
 
-— Marcel Cafferata
-IncidentAxis`;
+I'm Marcel Cafferata, a California fire engineer with 25 years in the fire service. I built IncidentAxis so you can practice commanding an incident out loud, from the dispatch to the end of the call, in both Static and Dynamic scenarios, before the real call.
+
+What happens next: I'll email you when your beta access is ready. It's free during the beta, and no card is needed.
+
+Want to hear it now? The sample dispatch is on the site: https://incidentaxis.netlify.app
+
+Questions or ideas? Just reply to this email. I read them.
+
+Stay safe,
+Marcel
+
+To be removed from the list, reply "remove."`;
 
 async function sendEmail(apiKey, { to, subject, text }) {
   const res = await fetch("https://api.resend.com/emails", {
