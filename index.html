@@ -236,11 +236,22 @@ function reset(){cmd=false;left=30;show()}
 show();setInterval(function(){if(!on||document.hidden)return;left--;if(!cmd&&left<=0){cmd=true;left=120}else if(cmd&&left<0){cmd=false;left=30}show()},1000);
 if('IntersectionObserver' in window){new IntersectionObserver(function(e){var v=e[0].isIntersecting;if(v&&!on)reset();on=v},{threshold:.2}).observe(t)}else{on=true}
 })();
-/* Dispatch text under the phone. */
-(function(){var dt=document.getElementById('dispT');if(!dt)return;
-var txt='Engine 1, Engine 2, Engine 3, Engine 4, Engine 5, Truck 1, Battalion 1, Battalion 2 — respond to 1840 Ridgemont Drive, for a confirmed structure fire. Caller reports popping sounds and white vapor from beneath the vehicle.',i=0,started=false;
-function type(){if(i<=txt.length){dt.textContent=txt.slice(0,i);i++;setTimeout(type,34)}else{var c=dt.parentElement.querySelector('.cur');setTimeout(function(){if(c)c.style.display='none'},2600)}}
-if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){dt.textContent=txt;var c2=dt.parentElement.querySelector('.cur');if(c2)c2.style.display='none'}
+/* Dispatch text under the phone. Types in when it scrolls into view. Once the recorded dispatch plays, the words follow the audio clock (play, pause, seek, replay). If exact word times are ever supplied as window.IA_DISPATCH_TIMES (one start time in seconds per word), they are used; otherwise the words are paced across the recording, with a little extra time at commas and the dash. */
+(function(){var dt=document.getElementById('dispT'),a=document.getElementById('dispA');if(!dt)return;
+var txt='Engine 1, Engine 2, Engine 3, Engine 4, Engine 5, Truck 1, Battalion 1, Battalion 2 — respond to 1840 Ridgemont Drive, for a confirmed structure fire. Caller reports popping sounds and white vapor from beneath the vehicle.',
+words=txt.split(' '),i=0,started=false,synced=false,cur=dt.parentElement.querySelector('.cur'),
+still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,cum=[],tot=0;
+words.forEach(function(w){cum.push(tot);tot+=w.length+(/,$/.test(w)?4:0)+(w==='—'?6:0)+1});
+function hideCur(){if(cur)cur.style.display='none'}
+function showWords(n){dt.textContent=words.slice(0,n).join(' ')}
+function upto(t){var T=window.IA_DISPATCH_TIMES,n=0,k;if(T&&T.length===words.length){for(k=0;k<T.length;k++){if(T[k]<=t)n=k+1}return n}
+var d=(a&&a.duration&&isFinite(a.duration))?a.duration:17.4,p=Math.max(0,Math.min(1,(t-.3)/Math.max(1,d-.6)))*tot;for(k=0;k<words.length;k++){if(cum[k]<p)n=k+1}return n}
+function tick(){if(!synced||a.paused||a.ended)return;showWords(upto(a.currentTime));requestAnimationFrame(tick)}
+if(a){a.addEventListener('play',function(){if(still)return;synced=true;started=true;if(cur)cur.style.display='';tick()});
+a.addEventListener('seeked',function(){if(synced&&a.paused&&!a.ended)showWords(upto(a.currentTime))});
+a.addEventListener('ended',function(){if(!synced)return;dt.textContent=txt;setTimeout(hideCur,1200)})}
+function type(){if(synced)return;if(i<=txt.length){dt.textContent=txt.slice(0,i);i++;setTimeout(type,34)}else{setTimeout(function(){if(!synced)hideCur()},2600)}}
+if(still){dt.textContent=txt;hideCur()}
 else if('IntersectionObserver' in window){new IntersectionObserver(function(e,ob){if(e[0].isIntersecting&&!started){started=true;type();ob.disconnect()}},{threshold:.2}).observe(dt)}else{type()}})();
 /* Hear the dispatch: the button only appears once the recorded dispatch file has been added at assets/audio/ev-cue1-dispatch.mp3. */
 (function(){var b=document.getElementById('hearD'),a=document.getElementById('dispA'),ic=document.getElementById('hearI'),tx=document.getElementById('hearT');if(!b||!a)return;
@@ -248,7 +259,7 @@ function idle(){ic.textContent='▶';tx.textContent='Hear the dispatch'}
 a.addEventListener('loadedmetadata',function(){b.hidden=false});
 a.addEventListener('ended',idle);a.addEventListener('pause',function(){if(a.ended||a.currentTime===0)idle()});
 b.addEventListener('click',function(){if(a.paused){var p=a.play();if(p&&p.catch)p.catch(function(){});ic.textContent='❚❚';tx.textContent='Pause'}else{a.pause();idle()}});
-fetch(a.getAttribute('src'),{method:'HEAD'}).then(function(r){if(r.ok){a.preload='metadata';a.load()}}).catch(function(){});
+fetch(a.getAttribute('src'),{method:'HEAD'}).then(function(r){if(r.ok){a.preload='metadata';a.load()}}).catch(function(){})
 })();
 </script>
 </body></html>
