@@ -40,6 +40,7 @@ h3{font-size:28px;font-weight:700;line-height:1.05}
 
 .hud{position:absolute;left:0;right:0;top:0;padding:44px 16px 20px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(rgba(6,9,12,.8),transparent);z-index:3}
 .hud b{font:600 13px var(--s);color:#EEF2F5}.hud i{font:500 16px var(--m);font-style:normal;color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:9px;padding:3px 9px;background:rgba(10,14,18,.5)}
+.hud .tmw{display:flex;align-items:center;gap:8px}.hud .hl{font:500 11px var(--m);letter-spacing:.1em;text-transform:uppercase;color:#C9D3DC}
 .chip{position:absolute;top:92px;right:14px;z-index:3;font:500 11px var(--m);color:#DDE5EB;border:1px solid rgba(255,255,255,.18);background:rgba(10,14,18,.6);border-radius:99px;padding:6px 12px}
 .live{position:absolute;left:50%;transform:translateX(-50%);bottom:34px;z-index:3;display:flex;align-items:center;gap:10px;font:500 12px var(--m);color:#E3EAF0;background:rgba(8,12,16,.65);border:1px solid rgba(255,255,255,.16);border-radius:99px;padding:10px 16px;white-space:nowrap}
 .live i{width:9px;height:9px;border-radius:50%;background:var(--em2);animation:p 1.4s ease-in-out infinite}@keyframes p{50%{opacity:.3}}
@@ -102,11 +103,11 @@ form.jf{align-items:stretch}.msg{flex-basis:100%;font-size:15px;color:#8A1C1C}.m
 <section class="hero"><div class="w"><div>
 <div class="eyebrow">For firefighters</div>
 <h1 style="margin-top:10px">Study the scene. Hear the dispatch. Take command.</h1>
-<p class="lead">Practice incident command out loud. Two minutes Static, six Dynamic.</p>
-<form class="jf" name="incidentaxis-early-list" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" novalidate data-where="hero"><input type="hidden" name="form-name" value="incidentaxis-early-list"><p style="position:absolute;left:-9999px" aria-hidden="true"><label>Do not fill this out <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><label class="sr" for="em1">Email address</label><input id="em1" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required><button class="cta" type="submit" data-umami-event="join-click" data-umami-event-where="hero-form">Join the free beta</button><div class="msg" role="status" aria-live="polite"></div><div class="trust">Free for beta testers. No card, no spam.</div></form>
+<p class="lead">Practice incident command out loud. Get scored feedback after every run.</p>
+<form class="jf" name="incidentaxis-early-list" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" novalidate data-where="hero"><input type="hidden" name="form-name" value="incidentaxis-early-list"><p style="position:absolute;left:-9999px" aria-hidden="true"><label>Do not fill this out <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><label class="sr" for="em1">Email address</label><input id="em1" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required><button class="cta" type="submit" data-umami-event="join-click" data-umami-event-where="hero-form">Join the free beta</button><div class="msg" role="status" aria-live="polite"></div><div class="trust">No card needed.</div></form>
 <div class="facts"><span>Radio report, size-up, orders, debrief</span><span>Learn and Test modes</span><span>Works on your phone</span></div>
 </div>
-<div><div class="phone" role="button" tabindex="0" data-k="electric-vehicle-fire" data-n="Electric vehicle fire" data-umami-event="tile-open" data-umami-event-scenario="Hero phone video" data-src="loops/electric-vehicle-fire-portrait.mp4" aria-label="The app run screen for an electric vehicle fire: the scene fills the phone, with the address and the run timer. Tap to watch it larger."><div class="scene" data-loop="loops/electric-vehicle-fire-portrait.mp4"></div><div class="hud"><b>1840 Ridgemont Dr</b><i id="hudT">0:30</i></div></div><div class="disp" role="note" aria-label="Dispatch: Engine 1, Engine 2, Engine 3, Engine 4, Engine 5, Truck 1, Battalion 1, Battalion 2 — respond to 1840 Ridgemont Drive, for a confirmed structure fire. Caller reports popping sounds and white vapor from beneath the vehicle."><span class="dlab">Dispatch</span><span id="dispT"></span><span class="cur" aria-hidden="true"></span></div><p class="hlink"><a href="#how">See how a run works ↓</a></p></div>
+<div><div class="phone" role="button" tabindex="0" data-k="electric-vehicle-fire" data-n="Electric vehicle fire" data-umami-event="tile-open" data-umami-event-scenario="Hero phone video" data-src="loops/electric-vehicle-fire-portrait.mp4" aria-label="The app run screen for an electric vehicle fire: the scene fills the phone, with the address and the run timer. Tap to watch it larger."><div class="scene" data-loop="loops/electric-vehicle-fire-portrait.mp4"></div><div class="hud"><b>1840 Ridgemont Dr</b><span class="tmw"><span class="hl" id="hudL">Study</span><i id="hudT">0:30</i></span></div></div><div class="disp" role="note" aria-label="Dispatch: Engine 1, Engine 2, Engine 3, Engine 4, Engine 5 as RIC, Truck 1, Battalion 1 — respond to 1840 Ridgemont Drive, for a confirmed structure fire. Caller reports popping sounds and white vapor from beneath the vehicle."><span class="dlab">Dispatch</span><span id="dispT"></span><span class="cur" aria-hidden="true"></span></div></div>
 </div></section>
 
 
@@ -225,15 +226,20 @@ if(window.umami&&umami.track)umami.track('signup-success',{where:f.dataset.where
  d.addEventListener('close',function(){if(v){v.pause();v.remove();v=null}var i=m.querySelector('img');if(i)i.remove()});
 })();
 </script><script>
-(function(){var t=document.getElementById('hudT');if(!t)return;
-var PH=[30,7,120],pi=0,left=30,on=true;
+/* Run timer in the phone picture: matches the app. 30 s study, dispatch, then 2:00 command. Restarts at Study each time it scrolls into view. */
+(function(){var t=document.getElementById('hudT'),l=document.getElementById('hudL');if(!t)return;
+var NM=['Study','Dispatch','Command'],PH=[30,7,120],pi=0,left=30,on=false;
 function fm(s){return Math.floor(s/60)+':'+('0'+(s%60)).slice(-2)}
-function show(){t.textContent=(pi===1)?'2:00':fm(left)}
+function show(){t.textContent=(pi===1)?'2:00':fm(left);if(l)l.textContent=NM[pi]}
+function reset(){pi=0;left=30;show()}
 show();setInterval(function(){if(!on||document.hidden)return;left--;if(left<0){pi=(pi+1)%3;left=PH[pi]}show()},1000);
-if('IntersectionObserver' in window){new IntersectionObserver(function(e){on=e[0].isIntersecting},{threshold:.2}).observe(t)}
-var dt=document.getElementById('dispT');if(dt){var txt='Engine 1, Engine 2, Engine 3, Engine 4, Engine 5, Truck 1, Battalion 1, Battalion 2 — respond to 1840 Ridgemont Drive, for a confirmed structure fire. Caller reports popping sounds and white vapor from beneath the vehicle.',i=0,started=false;
+if('IntersectionObserver' in window){new IntersectionObserver(function(e){var v=e[0].isIntersecting;if(v&&!on)reset();on=v},{threshold:.2}).observe(t)}else{on=true}
+})();
+/* Dispatch text under the phone. */
+(function(){var dt=document.getElementById('dispT');if(!dt)return;
+var txt='Engine 1, Engine 2, Engine 3, Engine 4, Engine 5 as RIC, Truck 1, Battalion 1 — respond to 1840 Ridgemont Drive, for a confirmed structure fire. Caller reports popping sounds and white vapor from beneath the vehicle.',i=0,started=false;
 function type(){if(i<=txt.length){dt.textContent=txt.slice(0,i);i++;setTimeout(type,34)}else{var c=dt.parentElement.querySelector('.cur');setTimeout(function(){if(c)c.style.display='none'},2600)}}
 if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){dt.textContent=txt;var c2=dt.parentElement.querySelector('.cur');if(c2)c2.style.display='none'}
-else if('IntersectionObserver' in window){new IntersectionObserver(function(e,ob){if(e[0].isIntersecting&&!started){started=true;type();ob.disconnect()}},{threshold:.2}).observe(dt)}else{type()}}})();
+else if('IntersectionObserver' in window){new IntersectionObserver(function(e,ob){if(e[0].isIntersecting&&!started){started=true;type();ob.disconnect()}},{threshold:.2}).observe(dt)}else{type()}})();
 </script>
 </body></html>
