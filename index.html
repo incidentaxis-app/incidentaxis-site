@@ -116,9 +116,6 @@ form.jf{align-items:stretch}.msg{flex-basis:100%;font-size:15px;color:#8A1C1C}.m
 <div class="facts"><span>Radio report, size-up, orders, debrief</span><span>Learn and Test modes</span><span>Works on your phone</span></div>
 </div>
 <div><div class="phone" role="button" tabindex="0" data-k="electric-vehicle-fire" data-n="Electric vehicle fire" data-umami-event="tile-open" data-umami-event-scenario="Hero phone video" data-src="loops/electric-vehicle-fire-portrait.mp4" aria-label="The app run screen for an electric vehicle fire: the scene fills the phone, with the address and the run timer. Tap to watch it larger."><div class="scene" data-loop="loops/electric-vehicle-fire-portrait.mp4"></div><div class="hud"><b>1840 Ridgemont Dr</b><span class="tmw"><span class="hl" id="hudL">Study</span><i id="hudT">0:30</i></span></div></div><button type="button" class="hear" id="hearD" hidden data-umami-event="hear-dispatch"><span id="hearI" aria-hidden="true">▶</span><span id="hearT">Hear the dispatch</span></button><audio id="dispA" preload="none" src="assets/audio/ev-cue1-dispatch.mp3"></audio><div class="disp" role="note" aria-label="Dispatch: Engine 1, Engine 2, Engine 3, Engine 4, Engine 5, Truck 1, Battalion 1, Battalion 2 — respond to 1840 Ridgemont Drive, for a confirmed structure fire. Caller reports popping sounds and white vapor from beneath the vehicle."><span class="dlab">Dispatch</span><span id="dispT"></span><span class="cur" aria-hidden="true"></span></div>
-<div class="ask" id="askCard" hidden>
-<form class="jf" name="incidentaxis-early-list" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" novalidate data-where="dispatch"><input type="hidden" name="form-name" value="incidentaxis-early-list"><input type="hidden" name="source" value=""><input type="hidden" name="campaign" value=""><p style="position:absolute;left:-9999px" aria-hidden="true"><label>Do not fill this out <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><p class="askh">Want the full run? Join the free beta.</p><label class="sr" for="em3">Email address</label><input id="em3" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required><button class="cta" type="submit" data-umami-event="join-click" data-umami-event-where="dispatch-form">Join the free beta</button><div class="msg" role="status" aria-live="polite"></div><p class="askn">No card needed.</p><button type="button" class="askno" id="askDismiss">Not now</button></form>
-</div>
 <p style="margin:14px 0 0;font-size:16px"><a href="demo/" style="color:#FF8A5C;font-weight:600" data-umami-event="preview-click" data-umami-event-where="hero">Preview the screens →</a></p></div>
 </div></section>
 
@@ -141,6 +138,9 @@ form.jf{align-items:stretch}.msg{flex-basis:100%;font-size:15px;color:#8A1C1C}.m
 <div class="note" role="note"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5E7A93" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 11v6M12 7.5v.5"/></svg><div><b>Simulated scenes.</b> Locations, exterior appearances, addresses, and names have been digitally altered or fictionalized for demonstration purposes and do not depict real properties or events.</div></div>
 <div style="margin-top:32px"><h3>Static</h3><div class="scn" id="st"></div></div>
 <div style="margin-top:40px"><h3>Dynamic</h3><div class="scn" id="dy"></div></div>
+<div class="ask" id="askCardEngaged" role="region" aria-label="Join the beta list" hidden>
+<form class="jf" name="incidentaxis-early-list" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" novalidate data-where="engaged"><input type="hidden" name="form-name" value="incidentaxis-early-list"><input type="hidden" name="source" value=""><input type="hidden" name="campaign" value=""><p style="position:absolute;left:-9999px" aria-hidden="true"><label>Do not fill this out <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><p class="askh">Want the full run?</p><label class="sr" for="em4">Email address</label><input id="em4" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required><button class="cta" type="submit" data-umami-event="join-click" data-umami-event-where="engaged-form">Join the beta list</button><div class="msg" role="status" aria-live="polite"></div><p class="askn">No card needed.</p><button type="button" class="askno" id="askDismissEngaged">Not now</button></form>
+</div>
 </div></section>
 
 <section id="pricing" style="background:#E7EBEF"><div class="w sec">
@@ -220,7 +220,7 @@ if(window.umami&&umami.track)umami.track('signup-success',{where:f.dataset.where
 /* Tile preview: tap a scenario picture to watch the clip larger, with a link to the early list. Prototype preview only; no app sign-up exists yet. */
 (function(){
  var d=document.createElement('dialog');d.id='pv';d.setAttribute('aria-label','Scenario preview');
- d.innerHTML='<div class="pvm"><button type="button" class="pvx" aria-label="Close preview">&times;</button></div><div class="pvb"><h3></h3><p>Simulation preview. Locations and names are fictionalized. The app is not open for sign-up yet.</p><a class="pvj" href="#join" data-umami-event="join-click" data-umami-event-where="preview">Join the free beta &rarr;</a></div>';
+ d.innerHTML='<div class="pvm"><button type="button" class="pvx" aria-label="Close preview">&times;</button></div><div class="pvb"><h3></h3><p>Simulation preview. Locations and names are fictionalized. The app is not open for sign-up yet.</p></div>';
  document.body.appendChild(d);
  var m=d.querySelector('.pvm'),h=d.querySelector('h3'),v=null;
  function close(){if(v){v.pause();v.remove();v=null}var i=m.querySelector('img');if(i)i.remove();if(d.open)d.close()}
@@ -280,11 +280,36 @@ fetch(a.getAttribute('src'),{method:'HEAD'}).then(function(r){if(r.ok){a.preload
 })();
 </script>
 <script>
-/* Peak-moment ask: when the recorded dispatch finishes, offer the signup inline under the phone. Once per session; never for members. */
-(function(){var card=document.getElementById('askCard'),a=document.getElementById('dispA'),dis=document.getElementById('askDismiss');if(!card||!a)return;
+/* The one earned ask: after a visitor has genuinely explored (two distinct looks), offer the signup once, in the flow after the scenario grid. Acts, not minutes. */
+(function(){var card=document.getElementById('askCardEngaged'),dis=document.getElementById('askDismissEngaged');if(!card)return;
+var mem=[],useMem=false;
+function load(){if(useMem)return mem.slice();try{var v=sessionStorage.getItem('ia_acts');return v?JSON.parse(v):[]}catch(e){useMem=true;return mem.slice()}}
+function save(a){if(useMem){mem=a.slice();return}try{sessionStorage.setItem('ia_acts',JSON.stringify(a.slice(0,10)))}catch(e){useMem=true;mem=a.slice()}}
 function joined(){try{return localStorage.getItem('ia_joined')==='1'}catch(e){return false}}
-function seen(){try{return !!sessionStorage.getItem('ia_ask')}catch(e){return false}}
-a.addEventListener('ended',function(){if(joined()||seen())return;try{sessionStorage.setItem('ia_ask','shown')}catch(e){}card.hidden=false;if(window.umami&&umami.track)umami.track('ask-shown',{where:'dispatch'})});
-if(dis)dis.addEventListener('click',function(){card.hidden=true;try{sessionStorage.setItem('ia_ask','dismissed')}catch(e){}if(window.umami&&umami.track)umami.track('ask-dismiss',{where:'dispatch'})})})();
+function asked(){try{return !!sessionStorage.getItem('ia_ask')}catch(e){return false}}
+function setAsk(v){try{sessionStorage.setItem('ia_ask',v)}catch(e){}}
+var signal=null,pending=false,shownFired=false;
+function reveal(){
+ if(joined()||asked()||!card.hidden)return;
+ var dlg=document.getElementById('pv');
+ if(dlg&&dlg.open){pending=true;return}
+ var acts=load();signal=(acts.length&&acts[acts.length-1]==='preview')?'preview':'tiles';
+ card.hidden=false;setAsk('shown');
+ if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting&&!shownFired){shownFired=true;if(window.umami&&umami.track)umami.track('ask-shown',{where:'engaged',signal:signal});io.disconnect()}})},{threshold:.5});io.observe(card)}
+ else if(!shownFired){shownFired=true;if(window.umami&&umami.track)umami.track('ask-shown',{where:'engaged',signal:signal})}
+}
+function check(){if(joined()||asked())return;if(load().length>=2)reveal()}
+function record(key){if(!key||joined()||asked())return;var a=load();if(a.indexOf(key)>=0)return;a.push(key);save(a);check()}
+document.addEventListener('click',function(e){var t=e.target;if(!t.closest)return;
+ var a=t.closest('a[href^="demo/"]');if(a){record('preview');return}
+ var b=t.closest('[data-k]');if(b)record(b.dataset.k)});
+document.addEventListener('keydown',function(e){if(e.key!=='Enter'&&e.key!==' ')return;var b=e.target.closest&&e.target.closest('[data-k]');if(b)record(b.dataset.k)});
+document.addEventListener('DOMContentLoaded',check);
+window.addEventListener('pageshow',check);
+var dlg=document.getElementById('pv');
+if(dlg)dlg.addEventListener('close',function(){if(pending){pending=false;reveal()}});
+if(dis)dis.addEventListener('click',function(){card.hidden=true;setAsk('dismissed');if(window.umami&&umami.track)umami.track('ask-dismiss',{where:'engaged',signal:signal})});
+check();
+})();
 </script>
 </body></html>
