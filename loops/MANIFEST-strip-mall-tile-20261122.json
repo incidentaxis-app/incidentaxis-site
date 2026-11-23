@@ -1,0 +1,24 @@
+{
+ "handoff": "Bumble media handoff 2026-11-22 for incidentaxis-app/incidentaxis-site \u2014 strip mall tile (12th scenario)",
+ "note": "Binary media travels as base64 text parts because the connector snapshot route is UTF-8 only (same pattern as the 2026-11-14 and 2026-11-17 tile handoffs). Reassemble the loop: decode each loops/strip-mall-loop.mp4.b64.partNNN in order and concatenate the decoded bytes (each 90,000-byte raw chunk encodes independently; equivalently cat the parts and base64 -d the stream), then verify sha256 against this manifest before binding. Poster: base64 -d assets/posters/strip-mall.jpg.b64. Bind targets: loops/strip-mall-loop.mp4 and assets/posters/strip-mall.jpg on main, then add the tile entry to the ST array in index.html. Owner deploy go: Marcel, 2026-11-22 20:10 PT.",
+ "items": [
+  {
+   "file": "strip-mall-loop.mp4",
+   "target": "loops/strip-mall-loop.mp4",
+   "bytes": 13755656,
+   "sha256": "1e454e02c467867e2743ac455a99521252e89f11fd91c968a3780d906ce37a78",
+   "parts": 153,
+   "chunk_raw_bytes": 90000,
+   "source": "files/landing-assets-20261112/strip-mall-loop.mp4 (COMBIZ S1 landscape clip, 1916x1080, 10.04s, from accepted COMBIZ S1 master)"
+  },
+  {
+   "file": "strip-mall.jpg",
+   "target": "assets/posters/strip-mall.jpg",
+   "bytes": 182594,
+   "sha256": "58bc09b017c03ed349c7e3ea7c09391b1b696d2ffe2dde70e4d04dad15aa5103",
+   "b64_file": "assets/posters/strip-mall.jpg.b64",
+   "b64_bytes": 243460,
+   "source": "files/landing-assets-20261112/strip-mall-poster.jpg (1280x720, from accepted COMBIZ S1 master)"
+  }
+ ]
+}
