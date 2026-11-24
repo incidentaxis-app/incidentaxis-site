@@ -6,6 +6,7 @@
 <title>IncidentAxis: practice incident command out loud</title>
 <meta name="description" content="Practice incident command out loud. Study the scene, hear the dispatch, give your orders, and see how the incident answers.">
 <link rel="canonical" href="https://incidentaxis.app/">
+<meta name="google-site-verification" content="xsV_BN2_s_vu2uRuLvJoSrNr111lSgAt1tk3mI-n8eY">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
@@ -105,6 +106,16 @@ form.jf{align-items:stretch}.msg{flex-basis:100%;font-size:15px;color:#8A1C1C}.m
 .askn{margin:10px 0 0;font-size:14.5px;color:var(--mut)}
 .askno{margin-top:6px;min-height:44px;padding:0 8px;background:transparent;border:0;color:var(--mut);font:500 15px var(--s);cursor:pointer;text-decoration:underline}
 .deal{margin:12px 0 0;font-size:15.5px;color:var(--mut)}
+.deptstrip{background:var(--ink);color:#EEF2F5}
+.deptstrip .w{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:space-between;padding-top:38px;padding-bottom:38px}
+.deptstrip h3{font-size:30px}
+.deptstrip p{margin:8px 0 0;color:#C5CFD9;font-size:16px;max-width:42em}
+.deptq{margin-top:16px;border-top:1px solid #2E3E4E;padding-top:14px}
+.deptq label{display:block;font-weight:600;font-size:15px;margin-bottom:8px}
+.deptq .row2{display:flex;gap:10px;flex-wrap:wrap}
+.deptq input[type=text]{flex:1 1 200px;min-width:0;min-height:48px;padding:0 14px;font:inherit;border:2px solid #fff;background:#fff;color:var(--ink);border-radius:4px}
+.deptq .done{font-size:15.5px;color:#C9D3DC;margin:0}
+.pvshare{margin-top:2px}
 </style><script defer src="https://cloud.umami.is/script.js" data-website-id="90ba6962-c536-480d-b74c-643565071938"></script><script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -219,6 +230,8 @@ form.jf{align-items:stretch}.msg{flex-basis:100%;font-size:15px;color:#8A1C1C}.m
 <p class="under">Each account works on up to 2 devices, one session at a time, and signs in with an emailed code, so there is no password to share. Prices shown are the planned launch prices.</p>
 </div></section>
 
+<section class="deptstrip" aria-label="For departments"><div class="w"><div><div class="eyebrow" style="color:var(--em2)">For departments</div><h3 style="margin-top:8px">Bring IncidentAxis to your department</h3><p>We're lining up the first department pilots now. Your firefighters train on the same scenarios, matched to your department's own response profile — built from your guidelines and confirmed by your training officer before anyone trains on it.</p></div><a class="cta" href="mailto:marcel@firefighteradvocate.com?subject=IncidentAxis%20department%20pilot">Ask about a department pilot</a></div></section>
+
 <section id="faq" style="background:#fff"><div class="w sec" style="max-width:900px">
 <h2>Questions</h2>
 <div style="margin-top:28px" id="faqs"></div>
@@ -228,6 +241,7 @@ form.jf{align-items:stretch}.msg{flex-basis:100%;font-size:15px;color:#8A1C1C}.m
 <div><h2>Join the beta list</h2><p style="margin:14px 0 0;color:var(--mut)">Beta testers get free access while we test, and the first scenarios as they are finished. We will email you when your access is ready.</p></div>
 <ul class="checks"><li>Works on iPhone and Android</li></ul><form class="jf" name="incidentaxis-early-list" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" novalidate data-where="join"><input type="hidden" name="form-name" value="incidentaxis-early-list"><input type="hidden" name="source" value=""><input type="hidden" name="campaign" value=""><p style="position:absolute;left:-9999px" aria-hidden="true"><label>Do not fill this out <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><label for="em2">Email address</label><input id="em2" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required><button class="cta" type="submit" data-umami-event="join-click" data-umami-event-where="join-form">Join the free beta</button><div class="msg" role="status" aria-live="polite"></div><div class="trust">One email when your access is ready. No spam, ever.</div></form><p class="fine">To be removed, email <a href="mailto:marcel@firefighteradvocate.com">marcel@firefighteradvocate.com</a>. See our <a href="privacy.html">Privacy Policy</a>.</p>
 </div></div></section>
+<form name="incidentaxis-department" data-netlify="true" hidden><input type="email" name="email"><input type="text" name="department"></form>
 </main>
 
 <footer><div class="w"><div style="max-width:760px">IncidentAxis is a training simulator. All scenarios are fictional. It does not replace department training or certification, and it is not affiliated with any fire agency.<p style="margin:14px 0 0"><a href="terms.html" style="color:#B7C3CF">Terms of Use</a> &nbsp;·&nbsp; <a href="privacy.html" style="color:#B7C3CF">Privacy Policy</a></p></div><div class="logo" style="color:#EEF2F5">Incident<b>Axis</b></div></div></footer>
@@ -273,10 +287,23 @@ fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlenco
 var t=document.createElement('p');t.textContent='You\'re on the list — we\'ll email you when your access is ready. No card needed.';
 var x=document.createElement('button');x.type='button';x.className='okx';x.setAttribute('aria-label','Close and show the signup form again');x.innerHTML='&times;';
 var sh=document.createElement('button');sh.type='button';sh.className='cta oks';sh.textContent='Share with a firefighter';sh.setAttribute('data-umami-event','share-click');
-var U='https://incidentaxis.netlify.app/',T='Practice incident command out loud. Free beta:';
+var U='https://incidentaxis.app/',T='Practice incident command out loud. Free beta:';
 sh.addEventListener('click',function(){if(navigator.share){navigator.share({title:'IncidentAxis',text:T,url:U}).catch(function(){})}else if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(U).then(function(){sh.textContent='Link copied'},function(){window.prompt('Copy this link',U)})}else{window.prompt('Copy this link',U)}});
 x.addEventListener('click',function(){d.replaceWith(f);btn.textContent=oldT;btn.disabled=false;inp.value='';inp.focus()});
-d.appendChild(x);d.appendChild(t);d.appendChild(sh);f.replaceWith(d);d.focus();
+d.appendChild(x);d.appendChild(t);d.appendChild(sh);
+var dq=null;try{dq=localStorage.getItem('ia_dept')}catch(e){}
+if(!dq){var emv=inp.value.trim();var dw=document.createElement('div');dw.className='deptq';
+var dl=document.createElement('label');dl.textContent='Your department (optional)';dl.htmlFor='deptIn';
+var dr=document.createElement('div');dr.className='row2';
+var di=document.createElement('input');di.type='text';di.id='deptIn';di.name='department';di.placeholder='Department or agency';di.autocomplete='organization';di.maxLength=120;
+var db=document.createElement('button');db.type='button';db.className='cta oks';db.textContent='Save';
+var dn=document.createElement('div');dn.style.cssText='flex-basis:100%;font-size:14.5px;color:#F0B4A0;min-height:20px';dn.setAttribute('role','status');
+db.addEventListener('click',function(){var v=di.value.trim();if(!v){di.focus();return}db.disabled=true;db.textContent='Saving...';dn.textContent='';
+fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'incidentaxis-department',email:emv,department:v}).toString()})
+.then(function(r){if(!r.ok)throw 0;try{localStorage.setItem('ia_dept','1')}catch(e){}dw.innerHTML='';var dp=document.createElement('p');dp.className='done';dp.textContent='Thanks — noted. We\'ll use it to line up your area\'s launch.';dw.appendChild(dp)})
+.catch(function(){db.disabled=false;db.textContent='Save';dn.textContent='That didn\'t save — no problem, you\'re on the list.'})});
+dr.appendChild(di);dr.appendChild(db);dw.appendChild(dl);dw.appendChild(dr);dw.appendChild(dn);d.appendChild(dw)}
+f.replaceWith(d);d.focus();
 joined=true;try{localStorage.setItem('ia_joined','1')}catch(e){}if(typeof upd==='function')upd();
 if(window.umami&&umami.track)umami.track('signup-success',{where:f.dataset.where,source:SRC})})
 .catch(function(c){fail((c===400||c===422)?BAD:DOWN)})})});
@@ -285,11 +312,11 @@ if(window.umami&&umami.track)umami.track('signup-success',{where:f.dataset.where
 /* Tile preview: tap a scenario picture to watch the clip larger, with a link to the early list. Prototype preview only; no app sign-up exists yet. */
 (function(){
  var d=document.createElement('dialog');d.id='pv';d.setAttribute('aria-label','Scenario preview');
- d.innerHTML='<div class="pvm"><button type="button" class="pvx" aria-label="Close preview">&times;</button></div><div class="pvb"><h3></h3><p>Simulation preview. Locations and names are fictionalized. The app is not open for sign-up yet.</p></div>';
+ d.innerHTML='<div class="pvm"><button type="button" class="pvx" aria-label="Close preview">&times;</button></div><div class="pvb"><h3></h3><p>Simulation preview. Locations and names are fictionalized. The app is not open for sign-up yet.</p><button type="button" class="cta sm pvshare">Share this scenario</button></div>';
  document.body.appendChild(d);
- var m=d.querySelector('.pvm'),h=d.querySelector('h3'),v=null;
+ var m=d.querySelector('.pvm'),h=d.querySelector('h3'),v=null,ck='',cn='';
  function close(){if(v){v.pause();v.remove();v=null}var i=m.querySelector('img');if(i)i.remove();if(d.open)d.close()}
- function open(box){var k=box.dataset.k;h.textContent=box.dataset.n;
+ function open(box){var k=box.dataset.k;ck=k;cn=box.dataset.n;h.textContent=box.dataset.n;
   var im=document.createElement('img');im.src='assets/posters/'+k+'.jpg';im.alt='';m.appendChild(im);
   v=document.createElement('video');v.controls=true;v.muted=true;v.loop=true;v.playsInline=true;v.setAttribute('playsinline','');v.poster=im.src;
   v.addEventListener('canplay',function(){var p=v.play();if(p&&p.catch)p.catch(function(){})});
@@ -301,6 +328,11 @@ if(window.umami&&umami.track)umami.track('signup-success',{where:f.dataset.where
   if(e.target.closest('.pvj')){close()}});
  document.addEventListener('keydown',function(e){var b=e.target.closest&&e.target.closest('[data-k]');if(b&&(e.key==='Enter'||e.key===' ')){e.preventDefault();open(b)}});
  d.addEventListener('close',function(){if(v){v.pause();v.remove();v=null}var i=m.querySelector('img');if(i)i.remove()});
+ var sb=d.querySelector('.pvshare');
+ sb.addEventListener('click',function(){if(!ck)return;var U='https://incidentaxis.app/?s='+encodeURIComponent(ck),T='IncidentAxis — '+cn+': practice incident command out loud.';
+  if(window.umami&&umami.track)umami.track('share-click',{where:'tile',scenario:cn});
+  if(navigator.share){navigator.share({title:'IncidentAxis',text:T,url:U}).catch(function(){})}else if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(U).then(function(){sb.textContent='Link copied'},function(){window.prompt('Copy this link',U)})}else{window.prompt('Copy this link',U)}});
+ try{var sq=new URLSearchParams(location.search).get('s');if(sq){var tb=document.querySelector('[data-k="'+sq+'"]');if(tb)setTimeout(function(){try{tb.click()}catch(e){}},400)}}catch(e){}
 })();
 </script><script>
 /* Run timer in the phone picture, matching the app: one 30 s study countdown. The dispatch (about 17 s) plays inside the last 17 s of it, so command starts at 2:00 the moment the dispatch ends, with no gap. Restarts each time it scrolls into view. */
